@@ -94,17 +94,17 @@ $(document).ready(function () {
                         <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded edit-member">Verwalten</button>
                     </div>`;
 
-                $('.grid').append(newMemberHtml);
+                $('#teamGrid').append(newMemberHtml);
 
                 // Click-Event für den "Verwalten"-Button des neuen Teammitglieds hinzufügen
-                $('.grid').find('.edit-member').last().click(function () {
+                $('#teamGrid').find('.edit-member').last().click(function () {
                     const memberId = $(this).siblings('.member-id').text().trim();
                     openEditModal(memberId);
                 });
 
                 // Click-Event für den "Löschen"-Button des neuen Teammitglieds hinzufügen
-                $('.grid').find('.delete-member').last().click(function () {
-                    memberIdToDelete = $(this).closest('.relative').find('.member-id').text().trim();
+                $('#teamGrid').find('.delete-member').last().click(function () {
+                    setMemberToDelete(response.member_id)
                     $('#confirmDeleteModal').removeClass('hidden');
                 });
                 } else {
@@ -153,6 +153,10 @@ $(document).ready(function () {
             });
         }
     });
+
+    function setMemberToDelete(id) {
+        memberIdToDelete = id;
+    }
 
     // Funktion, um das Create-Modal zu schließen, wenn außerhalb geklickt wird und Image-Modal nicht sichtbar ist
     function closeModalOnClickOutside(event) {
