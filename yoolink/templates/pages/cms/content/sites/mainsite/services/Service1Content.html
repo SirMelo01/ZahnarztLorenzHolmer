@@ -50,7 +50,7 @@
         </div>
 
         <!-- Abschnitt für Vorher-Nachher-Bilder -->
-        <div id="sliderImageSection" class="flex justify-center space-x-4 mt-8" {% if not (prevImage and afterImage) %}style="display: none;" {% endif %}>
+        <div id="sliderImageSection" class="flex justify-center space-x-4 mt-8" {% if not prevImage and not afterImage %} style="display: none;" {% endif %}>
             <div class="flex flex-col items-center">
                 <p class="text-center text-gray-700 font-semibold mb-2">Bild vorher</p>
                 <img src="{% if prevImage %}{{ prevImage.file.url }}{% else %}{% static 'images/designImg/filler.png' %}{% endif %}"
