@@ -48,7 +48,7 @@
                         class="bg-gray-200 rounded-lg appearance-none border-2 border-gray-200 w-full py-2 px-4 text-base text-gray-800 md:text-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                         id="description" type="text">{% if textContent and textContent.title %}{{textContent.description}}{% else %}Für Ihre Zähne{% endif %}
                 </textarea>
-                    <input inputType="buttonText"
+                    <input id="buttonText"
                         value="{% if textContent and textContent.buttonText %}{{textContent.buttonText}}{% else %}Termin vereinbaren{% endif %}"
                         class="rounded-md bg-blue-300 text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"></input>
                 </div>

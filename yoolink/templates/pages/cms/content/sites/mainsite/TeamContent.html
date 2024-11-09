@@ -14,7 +14,7 @@
     <div>
       {% csrf_token %}
       <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-6 hover:cursor-pointer"
-        id="saveTextData" name="main_service">
+        id="saveTextData" name="main_team">
         Speichern
       </a>
     </div>
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="flex flex-col justify-center text-center space-y-4">
     <h4>Du möchtest deine Mitarbeiter verwalten? Dann klicke auf den folgenden Button:</h4>
     <a href="{% url 'cms:team-list' %}"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Mitarbeiter verwalten</a>
