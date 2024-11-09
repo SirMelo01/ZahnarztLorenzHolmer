@@ -322,8 +322,7 @@ title %} {% block content %} {% block css %} {% compress css inline %}
 <section class="md:py-14 relative">
     <div class="max-w-6xl mx-auto px-4 text-center pt-14 pb-20 md:my-28">
         <!-- Title -->
-        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if teamText %}{{teamText.title}}{% else %}Unser Team{%
-            endif %}</h2>
+        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if teamText %}{{teamText.title}}{% else %}Unser Team{% endif %}</h2>
         <p class="mt-4 text-gray-600 text-lg">{% if teamText %}{{teamText.description}}{% else %}Meet our experienced
             team of professionals dedicated to your oral
             health.{% endif %}</p>
@@ -350,8 +349,7 @@ title %} {% block content %} {% block css %} {% compress css inline %}
     <div class="max-w-7xl mx-auto pt-8 pb-24 px-8">
         <!-- Title and Appointment Button -->
         <div class="text-center">
-            <h2 class="text-4xl font-semibold text-[#262C5D]">{% if contactText %}{{contactText.title}}{% else %}Unsere
-                Kontakte{% endif %}</h2>
+            <h2 class="text-4xl font-semibold text-[#262C5D]">{% if contactText %}{{contactText.title}}{% else %}Unsere Kontakte{% endif %}</h2>
             <p class="mt-4 text-gray-600 mb-6 text-lg">
                 {% if contactText %}{{contactText.description}}{% else %}Wir stehen Ihnen jederzeit zur Verfügung, um
                 Ihre Fragen zu beantworten und Termine zu vereinbaren.{% endif %}
@@ -451,13 +449,11 @@ title %} {% block content %} {% block css %} {% compress css inline %}
                     <div>
                         <!-- Address -->
                         <h3 class="text-lg font-semibold mb-2">Adresse:</h3>
-                        <p class="text-gray-600">{% if owner_data and owner_data.address %}{{owner_data.address}}{% else
-                            %}Deggendorfer Str. 50A, 94447 Plattling{%endif%}</p>
+                        <p class="text-gray-600">{% if owner_data and owner_data.address %}{{owner_data.address}}{% else %}Deggendorfer Str. 50A, 94447 Plattling{%endif%}</p>
 
                         <!-- Phone -->
                         <h3 class="text-lg font-semibold mt-4 mb-2">Telefon:</h3>
-                        <p class="text-gray-600 mb-6">{% if owner_data and owner_data.tel_number
-                            %}{{owner_data.tel_number}}{% else %}+123 6897 8974{% endif %}</p>
+                        <p class="text-gray-600 mb-6">{% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+123 6897 8974{% endif %}</p>
 
                         <a href="{% if owner_data and owner_data.emergencyURL %}{{owner_data.emergencyURL}}{% else %}#{% endif %}"
                             class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
