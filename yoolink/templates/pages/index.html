@@ -269,8 +269,7 @@
     <div class="absolute top-0 w-full h-20 bg-gradient-to-b from-white to-gray-100"></div>
     <div class="max-w-6xl mx-auto px-4 text-center mt-8">
         <!-- Title -->
-        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if praxisTitle %}{{praxisTitle}}{% else %}Unsere Praxis{%
-            endif %}</h2>
+        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if praxisTitle %}{{praxisTitle}}{% else %}Unsere Praxis{% endif %}</h2>
         <p class="mt-4 text-gray-600 text-lg">{% if praxisBeschreibung %}{{praxisBeschreibung}}{% else %}Ein Einblick in
             unsere modernen Praxisräume, in denen wir uns um Ihr Wohlbefinden kümmern.{% endif %}</p>
     </div>
@@ -479,9 +478,8 @@
                         </a>
 
                         <!-- "Termin" - Visible only on small screens -->
-                        <a href="{% if owner_data and owner_data.appointmentURL %}{{owner_data.appointmentURL}}{% else %}#{% endif %}
-                              class=" block md:hidden bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow
-                            hover:bg-blue-700">
+                        <a href="{% if owner_data and owner_data.appointmentURL %}{{owner_data.appointmentURL}}{% else %}#{% endif %}"
+                              class=" block md:hidden bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
                             Termin
                         </a>
 
@@ -530,6 +528,8 @@
 </section>
 
 
-{% endblock content %} {% block javascriptend %} {% compress js inline %}
+{% endblock content %} 
+
+{% block javascriptend %} {% compress js inline %}
 <script defer src="{% static 'js/home.js' %}"></script>
 {% endcompress js %} {% endblock javascriptend %}
