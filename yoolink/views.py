@@ -30,31 +30,43 @@ def load_index(request):
     if TextContent.objects.filter(name="main_hero").exists():
         context["heroText"] = TextContent.objects.get(name='main_hero')
 
-    if TextContent.objects.filter(name="main_responsive").exists():
-        context["responsiveText"] = TextContent.objects.get(name='main_responsive')
+    if TextContent.objects.filter(name="main_service").exists():
+        context["serviceText"] = TextContent.objects.get(name='main_service')
 
-    if TextContent.objects.filter(name="main_cms").exists():
-        context["cmsText"] = TextContent.objects.get(name='main_cms')
+    # Services
+    if TextContent.objects.filter(name="main_service_1").exists():
+        context["serviceText_1"] = TextContent.objects.get(name='main_service_1')
 
-    if TextContent.objects.filter(name="main_price").exists():
-        context["priceText"] = TextContent.objects.get(name='main_price')
+    if fileentry.objects.filter(place='main_service_1_prev').exists():
+        context["serviceImage_1_prev"] = fileentry.objects.get(place='main_service_1_prev')
+
+    if fileentry.objects.filter(place='main_service_1_after').exists():
+        context["serviceImage_1_after"] = fileentry.objects.get(place='main_service_1_after')
+    # Services END
 
     if TextContent.objects.filter(name="main_team").exists():
         context["teamText"] = TextContent.objects.get(name='main_team')
 
+    if TextContent.objects.filter(name="main_contact").exists():
+        context["contactText"] = TextContent.objects.get(name='main_contact')
+
+    if TextContent.objects.filter(name="main_faq").exists():
+        context["faqText"] = TextContent.objects.get(name='main_faq')
+
+    # Muss überall sein
+    if TextContent.objects.filter(name="footer").exists():
+        context["footerText"] = TextContent.objects.get(name='footer')
+
     # Galery
-    if Galerie.objects.filter(place='main_hero').exists():
-        context["heroImages"] = Galerie.objects.get(place='main_hero').images.all()
-        
-    if Galerie.objects.filter(place='main_responsive_desktop').exists():
-        context['responsiveDesktopImages'] = Galerie.objects.get(place='main_responsive_desktop').images.all()
-        
-    if Galerie.objects.filter(place='main_responsive_handy').exists():
-        context['responsiveHandyImages'] = Galerie.objects.get(place='main_responsive_handy').images.all()
+    if Galerie.objects.filter(place='main_praxis').exists():
+        praxisGalerie = Galerie.objects.get(place='main_praxis')
+        context["teamGalery"] = praxisGalerie.images.all()
+        context["praxisTitle"] = praxisGalerie.title
+        context["praxisBeschreibung"] = praxisGalerie.description
 
     # Images
-    if fileentry.objects.filter(place='main_cms').exists():
-        context["cmsImage"] = fileentry.objects.get(place='main_cms')
+    if fileentry.objects.filter(place='main_hero').exists():
+        context["heroImage"] = fileentry.objects.get(place='main_hero')
     
     # Mitarbeiter
     active_team_members = TeamMember.objects.filter(active=True)

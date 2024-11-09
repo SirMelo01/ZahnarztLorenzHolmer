@@ -2,11 +2,7 @@
 {% load compress static %}
 {% block title %} {{block.super}} | CMS{% endblock %}
 
-
-
 {% block content %}
-
-
 
 <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
     <!-- Image Manage Card -->
@@ -71,18 +67,6 @@
         <div class="flex-grow"></div>
         <div class="flex justify-center items-center mt-4">
             <a href="{% url 'cms:sites' %}" 
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Verwalten</a>
-        </div>
-    </div>
-    <!-- Shop -->
-    <div class="bg-blue-100 border-gray-200 rounded-2xl shadow-xl p-6 text-black flex flex-col">
-        <h2 class="text-2xl font-bold mb-4 flex justify-between">Shop <i class="bi bi-shop"></i></h2>
-        <p class="mb-4">Hier kannst du deinen Shop verwalten</p>
-        <p class="mb-4">Produkte: <strong>{{product_count}}</strong></p>
-        <p class="mb-4">Offene Aufträge: <strong>{{order_not_closed_count}}</strong></p>
-        <div class="flex-grow"></div>
-        <div class="flex justify-center items-center mt-4">
-            <a href="{% url 'cms:shop' %}"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Verwalten</a>
         </div>
     </div>

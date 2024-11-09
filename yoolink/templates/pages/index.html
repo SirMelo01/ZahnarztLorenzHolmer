@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% load compress static %} {% block title%}{{block.super}} - Webdesign Agentur{% endblock title %} {% block content %} {% block css %} {% compress css inline %}
+{% extends "base.html" %} {% load compress static %} {% block title%}{{block.super}} - Webdesign Agentur{% endblock
+title %} {% block content %} {% block css %} {% compress css inline %}
 <link href="{% static 'css/cardslider.css' %}" rel="stylesheet" />
 <link href="{% static 'css/wellen.css' %}" rel="stylesheet" />
 <link href="{% static 'css/fische.css' %}" rel="stylesheet" />
@@ -9,493 +10,528 @@
 
 <!-- Hero Section -->
 <section id="owner" class="relative lg:min-h-[calc(70vh)] flex justify-center items-center">
-  <!-- Flex container -->
-  <div
-      class="container flex flex-col items-center max-w-3xl lg:max-w-5xl px-6 mx-auto mt-24 md:mt-10 space-y-0 md:space-y-0 md:flex-row md:space-x-12 space-x-0">
+    <!-- Flex container -->
+    <div
+        class="container flex flex-col items-center max-w-3xl lg:max-w-5xl px-6 mx-auto mt-24 md:mt-10 space-y-0 md:space-y-0 md:flex-row md:space-x-12 space-x-0">
 
-      <!-- Right item with SVG heartbeat-tooth pattern background -->
-      <div class="flex flex-col mb-4 lg:mb-32 space-y-2 md:w-1/2 relative">
-          <!-- SVG heartbeat-tooth pattern -->
-          <svg class="absolute -top-16 -left-16 opacity-10 w-52 h-52" xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 100 100">
-              <!-- Heartbeat pattern -->
-              <path d="M10 50 Q 15 40, 20 50 T 30 50 T 40 30 T 50 50 T 60 70 T 70 50 T 80 50 Q 85 40, 90 50"
-                  stroke="#262C5D" stroke-width="2" fill="none" />
-          </svg>
-          <h1
-              class="max-w-sm md:max-w-none text-[#262C5D] font-semibold text-3xl text-center md:text-4xl xl:text-5xl md:text-left">
-              Dr. Lorenz Holmer
-          </h1>
-          <div>
-              <h2 class="text-xl">Ihr Zahnarzt in Plattling</h2>
-              <p class="text-xl font-semibold text-blue-950">Für Ihre Zähne</p>
-              <button
-                  class="mt-10 hidden md:inline-block text-sm bg-[#262C5D] text-white px-8 py-3 rounded-full shadow-md shadow-[#262C5D] transition-transform duration-300 ease-in-out hover:scale-105">
-                  Termin vereinbaren
-              </button>
-          </div>
-      </div>
+        <!-- Right item with SVG heartbeat-tooth pattern background -->
+        <div class="flex flex-col mb-4 lg:mb-32 space-y-2 md:w-1/2 relative">
+            <!-- SVG heartbeat-tooth pattern -->
+            <svg class="absolute -top-16 -left-16 opacity-10 w-52 h-52" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100">
+                <!-- Heartbeat pattern -->
+                <path d="M10 50 Q 15 40, 20 50 T 30 50 T 40 30 T 50 50 T 60 70 T 70 50 T 80 50 Q 85 40, 90 50"
+                    stroke="#262C5D" stroke-width="2" fill="none" />
+            </svg>
+            <h1
+                class="max-w-sm md:max-w-none text-[#262C5D] font-semibold text-3xl text-center md:text-4xl xl:text-5xl md:text-left">
+                {% if heroText %}{{heroText.header}}{% else %}Dr. Lorenz Holmer{% endif %}
+            </h1>
+            <div>
+                <h2 class="text-xl">{% if heroText %}{{heroText.title}}{% else %}Ihr Zahnarzt in Plattling{% endif %}
+                </h2>
+                <p class="text-xl font-semibold text-blue-950">{% if heroText %}{{heroText.description}}{% else %}Für
+                    Ihre Zähne{% endif %}</p>
+                <button
+                    class="mt-10 hidden md:inline-block text-sm bg-[#262C5D] text-white px-8 py-3 rounded-full shadow-md shadow-[#262C5D] transition-transform duration-300 ease-in-out hover:scale-105">
+                    {% if heroText %}{{heroText.buttonText}}{% else %}Termin vereinbaren{% endif %}
+                </button>
+            </div>
+        </div>
 
-      <!-- Image -->
-      <div class="md:w-1/2 mt-0 md:mt-0 max-w-80 md:max-w-full">
-          <img src="{% static 'images/Portrait/LH Portrait.png' %}" class="rounded-xl" alt="">
-      </div>
-  </div>
-  <!-- Gradient Divider -->
-  <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-transparent to-gray-50"></div>
+        <!-- Image -->
+        <div class="md:w-1/2 mt-0 md:mt-0 max-w-80 md:max-w-full">
+            <img title="{% if heroImage %}{{heroImage.title}}{% endif %}"
+                src="{% if heroImage %}{{heroImage.file.url}}{% else %}{% static 'images/Portrait/LH Portrait.png' %}{% endif %}"
+                alt="{% if heroImage %}{{heroImage.title}}{% endif %}" class="rounded-xl">
+        </div>
+    </div>
+    <!-- Gradient Divider -->
+    <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-transparent to-gray-50"></div>
 </section>
 
 <!-- Services Section -->
 <section class="py-8 md:py-20">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-      <!-- Title and Subtitle -->
-      <h2 class="text-4xl font-semibold text-[#262C5D]">Unsere Leistungen</h2>
-      <p class="mt-4 text-gray-600 text-lg">Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung
-          von Krankheiten wie Karies oder Parodontitis. Hier sind einige unserer wesentlichen Leistungen, um
-          Ihre Zahngesundheit zu gewährleisten.</p>
-  </div>
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <!-- Title and Subtitle -->
+        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if serviceText %}{{serviceText.title}}{% else %}Unsere
+            Leistungen{% endif %}</h2>
+        <p class="mt-4 text-gray-600 text-lg">{% if serviceText %}{{serviceText.description}}{% else %}Der wichtigste
+            Pfeiler der modernen Zahnmedizin ist die Vorbeugung
+            von Krankheiten wie Karies oder Parodontitis. Hier sind einige unserer wesentlichen Leistungen, um
+            Ihre Zahngesundheit zu gewährleisten.{% endif %}</p>
+    </div>
 
-  <!-- Services List -->
-  <div class="mt-4 md:mt-20 max-w-6xl mx-auto px-4 space-y-24">
+    <!-- Services List -->
+    <div class="mt-4 md:mt-20 max-w-6xl mx-auto px-4 space-y-24">
 
-      <!-- Service Item 1 - Bild links, Text rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1">
-              <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild"
-                  class="w-full rounded-lg shadow-lg shadow-slate-600">
-          </div>
-          <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe"
-                      class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Prophylaxe & Recall</h3>
-              </div>
-              <p class="text-gray-600">
-                  Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                  beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                  ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                  für die lebenslange Zahngesundheit.
-                  Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                  wie eine perfekte Mundhygiene aussieht.
-              </p>
-          </div>
-      </div>
+        <!-- Service Item 1 - Bild links, Text rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <!-- Bild-Bereich -->
+            <div class="flex-1 flex justify-center items-center">
+                {% if serviceImage_1_prev and serviceImage_1_after %}
+                <!-- Vorher-Nachher-Slider -->
+                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
+                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ serviceImage_1_prev.file.url }}"
+                        alt="Bild vorher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ serviceImage_1_after.file.url }}"
+                        alt="Bild nachher" />
+                </img-comparison-slider>
+                {% elif serviceImage_1_prev %}
+                <!-- Nur das Vorher-Bild -->
+                <img src="{{ serviceImage_1_prev.file.url }}" alt="Prophylaxe Bild"
+                    class="w-full rounded-lg shadow-lg shadow-slate-600">
+                {% else %}
+                <!-- Platzhalterbild, falls kein Bild vorhanden -->
+                <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild"
+                    class="w-full rounded-lg shadow-lg shadow-slate-600">
+                {% endif %}
+            </div>
+            <!-- Text-Bereich -->
+            <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">
+                        {% if serviceText_1 and serviceText_1.title %}
+                        {{ serviceText_1.title }}
+                        {% else %}
+                        Prophylaxe & Recall
+                        {% endif %}
+                    </h3>
+                </div>
+                <p class="text-gray-600">
+                    {% if serviceText_1 and serviceText_1.description %}
+                    {{ serviceText_1.description }}
+                    {% else %}
+                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
+                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
+                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
+                    für die lebenslange Zahngesundheit.
+                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
+                    wie eine perfekte Mundhygiene aussieht.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
 
-      <!-- Service Item 2 - Text links, Bild rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center justify-center md:space-x-8">
-          <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col mb-5 md:mb-6 items-center space-x-4 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Composite" class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Composite Restaurationen</h3>
-              </div>
-              <p class="text-gray-600">
-                  Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                  beispielsweise
-                  Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung ist eine
-                  optimale Mundhygiene
-                  und regelmäßige professionelle Zahnreinigungen entscheidend für die lebenslange
-                  Zahngesundheit.
-                  Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                  wie eine
-                  perfekte Mundhygiene aussieht.
-              </p>
-          </div>
-          <div class="flex-1 flex order-1 md:order-2 justify-center items-center">
-              <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                  <img class="rounded-lg max-h-[24rem]" slot="first" src="{% static 'images/Behandlungsfaelle/Flg AM.png' %}" />
-                  <img class="rounded-lg max-h-[24rem]" slot="second" src="{% static 'images/Behandlungsfaelle/Flg Comp.png' %}" />
-              </img-comparison-slider>
-          </div>
-      </div>
+        <!-- Service Item 2 - Text links, Bild rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center justify-center md:space-x-8">
+            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col mb-5 md:mb-6 items-center space-x-4 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Composite"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Composite Restaurationen</h3>
+                </div>
+                <p class="text-gray-600">
+                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
+                    beispielsweise
+                    Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung ist eine
+                    optimale Mundhygiene
+                    und regelmäßige professionelle Zahnreinigungen entscheidend für die lebenslange
+                    Zahngesundheit.
+                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
+                    wie eine
+                    perfekte Mundhygiene aussieht.
+                </p>
+            </div>
+            <div class="flex-1 flex order-1 md:order-2 justify-center items-center">
+                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
+                    <img class="rounded-lg max-h-[24rem]" slot="first"
+                        src="{% static 'images/Behandlungsfaelle/Flg AM.png' %}" />
+                    <img class="rounded-lg max-h-[24rem]" slot="second"
+                        src="{% static 'images/Behandlungsfaelle/Flg Comp.png' %}" />
+                </img-comparison-slider>
+            </div>
+        </div>
 
 
-      <!-- Service Item 3 - Bild links, Text rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1 flex justify-center items-center">
-              <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                  <img slot="first" class="rounded-lg max-h-[24rem]" src="{% static 'images/Behandlungsfaelle/WF nachher.png' %}" />
-                  <img slot="second" class="rounded-lg max-h-[24rem]" src="{% static 'images/Behandlungsfaelle/WF vorher.png' %}" />
-              </img-comparison-slider>
-          </div>
-          <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Endodontie" class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Endodontie</h3>
-              </div>
-              <p class="text-gray-600">
-                  Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                  beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                  ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                  für die lebenslange Zahngesundheit.
-                  Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                  wie eine perfekte Mundhygiene aussieht.
-              </p>
-          </div>
-      </div>
+        <!-- Service Item 3 - Bild links, Text rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <div class="flex-1 flex justify-center items-center">
+                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
+                    <img slot="first" class="rounded-lg max-h-[24rem]"
+                        src="{% static 'images/Behandlungsfaelle/WF nachher.png' %}" />
+                    <img slot="second" class="rounded-lg max-h-[24rem]"
+                        src="{% static 'images/Behandlungsfaelle/WF vorher.png' %}" />
+                </img-comparison-slider>
+            </div>
+            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Endodontie"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Endodontie</h3>
+                </div>
+                <p class="text-gray-600">
+                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
+                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
+                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
+                    für die lebenslange Zahngesundheit.
+                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
+                    wie eine perfekte Mundhygiene aussieht.
+                </p>
+            </div>
+        </div>
 
-      <!-- Service Item 4 - Text links, Bild rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Zahnersatz.png' %}" alt="Icon Zahnersatz"
-                      class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Zahnersatz</h3>
-              </div>
-              <p class="text-gray-600">
-                  Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                  beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                  ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                  für die lebenslange Zahngesundheit.
-                  Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                  wie eine perfekte Mundhygiene aussieht.
-              </p>
-          </div>
-          <div class="flex-1 order-1 md:order-2">
-              <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                  <img slot="first" class="rounded-lg"
-                      src="{% static 'images/Behandlungsfaelle/Angepasst/Front vorher Kopie.jpg' %}" />
-                  <img slot="second" class="rounded-lg"
-                      src="{% static 'images/Behandlungsfaelle/Angepasst/Front nachher - Kopie.jpg' %}" />
-              </img-comparison-slider>
-          </div>
-      </div>
+        <!-- Service Item 4 - Text links, Bild rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Zahnersatz.png' %}" alt="Icon Zahnersatz"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Zahnersatz</h3>
+                </div>
+                <p class="text-gray-600">
+                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
+                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
+                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
+                    für die lebenslange Zahngesundheit.
+                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
+                    wie eine perfekte Mundhygiene aussieht.
+                </p>
+            </div>
+            <div class="flex-1 order-1 md:order-2">
+                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
+                    <img slot="first" class="rounded-lg"
+                        src="{% static 'images/Behandlungsfaelle/Angepasst/Front vorher Kopie.jpg' %}" />
+                    <img slot="second" class="rounded-lg"
+                        src="{% static 'images/Behandlungsfaelle/Angepasst/Front nachher - Kopie.jpg' %}" />
+                </img-comparison-slider>
+            </div>
+        </div>
 
-      <!-- Service Item 5 - Bild links, Text rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1">
-              <img src="{% static 'images/Bilder Shooting/IMG_4996.jpg' %}" alt="Bleaching Bild"
-                  class="w-full rounded-lg shadow-lg shadow-slate-600">
-          </div>
-          <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/PZR.png' %}" alt="Icon Bleaching" class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Bleaching</h3>
-              </div>
-              <p class="text-gray-600">
-                  Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                  beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                  ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                  für die lebenslange Zahngesundheit.
-                  Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                  wie eine perfekte Mundhygiene aussieht.
-              </p>
-          </div>
-      </div>
+        <!-- Service Item 5 - Bild links, Text rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <div class="flex-1">
+                <img src="{% static 'images/Bilder Shooting/IMG_4996.jpg' %}" alt="Bleaching Bild"
+                    class="w-full rounded-lg shadow-lg shadow-slate-600">
+            </div>
+            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/PZR.png' %}" alt="Icon Bleaching"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Bleaching</h3>
+                </div>
+                <p class="text-gray-600">
+                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
+                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
+                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
+                    für die lebenslange Zahngesundheit.
+                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
+                    wie eine perfekte Mundhygiene aussieht.
+                </p>
+            </div>
+        </div>
 
-      <!-- Service Item 6 - Text links, Bild rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Parodontologie.png' %}" alt="Icon Zahnersatz"
-                      class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
-              </div>
-              <p class="text-gray-600">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptates odit,
-                  consequuntur labore veniam, minus inventore laudantium cupiditate similique beatae suscipit
-                  perspiciatis aspernatur iure consectetur voluptate? Vero unde odit cupiditate.
-              </p>
-          </div>
-          <div class="flex-1 order-1 md:order-2">
-              <img src="https://placehold.co/600x400" alt="Bleaching Bild"
-                  class="w-full rounded-lg shadow-lg shadow-slate-600">
-          </div>
-      </div>
+        <!-- Service Item 6 - Text links, Bild rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Parodontologie.png' %}" alt="Icon Zahnersatz"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
+                </div>
+                <p class="text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptates odit,
+                    consequuntur labore veniam, minus inventore laudantium cupiditate similique beatae suscipit
+                    perspiciatis aspernatur iure consectetur voluptate? Vero unde odit cupiditate.
+                </p>
+            </div>
+            <div class="flex-1 order-1 md:order-2">
+                <img src="https://placehold.co/600x400" alt="Bleaching Bild"
+                    class="w-full rounded-lg shadow-lg shadow-slate-600">
+            </div>
+        </div>
 
-      <!-- Service Item 7 - Bild links, Text rechts -->
-      <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-          <div class="flex-1">
-              <img src="https://placehold.co/600x400" alt="Bleaching Bild"
-                  class="w-full rounded-lg shadow-lg shadow-slate-600">
-          </div>
-          <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-              <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                  <img src="{% static 'images/Icons Behandlungen/Notfall.png' %}" alt="Icon Bleaching" class="w-14 h-14 mb-4">
-                  <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
-              </div>
-              <p class="text-gray-600">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam harum nobis soluta
-                  reiciendis aut earum aperiam numquam suscipit delectus vitae perferendis, labore in,
-                  incidunt tenetur est laudantium, et nihil saepe!
-              </p>
-          </div>
-      </div>
-  </div>
+        <!-- Service Item 7 - Bild links, Text rechts -->
+        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
+            <div class="flex-1">
+                <img src="https://placehold.co/600x400" alt="Bleaching Bild"
+                    class="w-full rounded-lg shadow-lg shadow-slate-600">
+            </div>
+            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
+                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                    <img src="{% static 'images/Icons Behandlungen/Notfall.png' %}" alt="Icon Bleaching"
+                        class="w-14 h-14 mb-4">
+                    <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
+                </div>
+                <p class="text-gray-600">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam harum nobis soluta
+                    reiciendis aut earum aperiam numquam suscipit delectus vitae perferendis, labore in,
+                    incidunt tenetur est laudantium, et nihil saepe!
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Unsere Praxis Section -->
 <section class="py-14 bg-gray-100 relative">
-  <div class="absolute top-0 w-full h-20 bg-gradient-to-b from-white to-gray-100"></div>
-  <div class="max-w-6xl mx-auto px-4 text-center mt-8">
-      <!-- Title -->
-      <h2 class="text-4xl font-semibold text-[#262C5D]">Unsere Praxis</h2>
-      <p class="mt-4 text-gray-600 text-lg">Ein Einblick in unsere modernen Praxisräume, in denen wir uns um
-          Ihr Wohlbefinden kümmern.</p>
-  </div>
+    <div class="absolute top-0 w-full h-20 bg-gradient-to-b from-white to-gray-100"></div>
+    <div class="max-w-6xl mx-auto px-4 text-center mt-8">
+        <!-- Title -->
+        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if praxisTitle %}{{praxisTitle}}{% else %}Unsere Praxis{%
+            endif %}</h2>
+        <p class="mt-4 text-gray-600 text-lg">{% if praxisBeschreibung %}{{praxisBeschreibung}}{% else %}Ein Einblick in
+            unsere modernen Praxisräume, in denen wir uns um Ihr Wohlbefinden kümmern.{% endif %}</p>
+    </div>
 
-  <!-- Slider main container -->
-  <div class="swiper container mx-auto max-w-5xl mt-8 px-2 md:px-0">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-          <!-- Slides -->
-          <div class="swiper-slide rounded-lg"><img src="{% static 'images/Behandlungszimmer/IMG_4766.jpg' %}"
-                  alt="Praxis Bild 1" class="w-full max-h-[500px] object-cover rounded-lg shadow-md ">
-              <p class="pt-6 pb-8 text-center text-gray-600">Das ist ein Bild aus unserer Praxis. Einer unserer tollen Behandlungszimmer!</p></div>
-          <div class="swiper-slide rounded-lg"><img src="{% static 'images/Bilder Shooting/IMG_5013.jpg' %}" alt="Praxis Bild 2"
-                  class="w-full max-h-[500px] object-cover rounded-lg shadow-md">
-                  <p class="pt-6 pb-8 text-center text-gray-600">Ein Bild, welches die aktive Behandlung an einem Patienten zeigt.</p></div>
-          <div class="swiper-slide rounded-lg"><img src="{% static 'images/Bilder Shooting/IMG_4947.jpg' %}" alt="Praxis Bild 3"
-                  class="w-full max-h-[500px] object-cover rounded-lg shadow-md">
-                  <p class="pt-6 pb-8 text-center text-gray-600">Unsere Artzhelferinnen empfangen Sie gleich am Eingang.</p></div>
-          
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
+    <!-- Slider main container -->
+    <div class="swiper container mx-auto max-w-5xl mt-8 px-2 md:px-0">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            {% if teamGalery %}
+            {% for img in teamGalery %}
+            <div class="swiper-slide rounded-lg"><img src="{{img.upload.url}}" alt="{{img.title}}"
+                    class="w-full max-h-[500px] object-cover rounded-lg shadow-md ">
+                <p class="pt-6 pb-8 text-center text-gray-600">{{img.title}}</p>
+            </div>
+            {% endfor %}
+            {% else %}
+            <!-- Slides -->
+            <div class="swiper-slide rounded-lg"><img src="{% static 'images/Behandlungszimmer/IMG_4766.jpg' %}"
+                    alt="Praxis Bild 1" class="w-full max-h-[500px] object-cover rounded-lg shadow-md ">
+                <p class="pt-6 pb-8 text-center text-gray-600">Das ist ein Bild aus unserer Praxis. Einer unserer tollen
+                    Behandlungszimmer!</p>
+            </div>
+            <div class="swiper-slide rounded-lg"><img src="{% static 'images/Bilder Shooting/IMG_5013.jpg' %}"
+                    alt="Praxis Bild 2" class="w-full max-h-[500px] object-cover rounded-lg shadow-md">
+                <p class="pt-6 pb-8 text-center text-gray-600">Ein Bild, welches die aktive Behandlung an einem
+                    Patienten zeigt.</p>
+            </div>
+            <div class="swiper-slide rounded-lg"><img src="{% static 'images/Bilder Shooting/IMG_4947.jpg' %}"
+                    alt="Praxis Bild 3" class="w-full max-h-[500px] object-cover rounded-lg shadow-md">
+                <p class="pt-6 pb-8 text-center text-gray-600">Unsere Artzhelferinnen empfangen Sie gleich am Eingang.
+                </p>
+            </div>
+            {% endif %}
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
 
-      <!-- If we need navigation buttons -->
-      <!--<div class="swiper-button-prev hidden"></div>
+        <!-- If we need navigation buttons -->
+        <!--<div class="swiper-button-prev hidden"></div>
       <div class="swiper-button-next hidden"></div>-->
 
-      <!-- If we need scrollbar -->
-      <!--<div class="swiper-scrollbar"></div>-->
-  </div>
-  <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-gray-100 to-white"></div>
+        <!-- If we need scrollbar -->
+        <!--<div class="swiper-scrollbar"></div>-->
+    </div>
+    <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-gray-100 to-white"></div>
 </section>
 
 <section class="md:py-14 relative">
-  <div class="max-w-6xl mx-auto px-4 text-center pt-14 pb-20 md:my-28">
-      <!-- Title -->
-      <h2 class="text-4xl font-semibold text-[#262C5D]">Unser Team</h2>
-      <p class="mt-4 text-gray-600 text-lg">Meet our experienced team of professionals dedicated to your oral
-          health.</p>
+    <div class="max-w-6xl mx-auto px-4 text-center pt-14 pb-20 md:my-28">
+        <!-- Title -->
+        <h2 class="text-4xl font-semibold text-[#262C5D]">{% if teamText %}{{teamText.title}}{% else %}Unser Team{%
+            endif %}</h2>
+        <p class="mt-4 text-gray-600 text-lg">{% if teamText %}{{teamText.description}}{% else %}Meet our experienced
+            team of professionals dedicated to your oral
+            health.{% endif %}</p>
 
-      <!-- Dentist Cards -->
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="text-center flex flex-col justify-center items-center">
-              <img src="{% static 'images/Portrait/LH Portrait.png' %}" alt="Polina Podolski"
-                  class="mx-auto rounded-tl-2xl rounded-br-2xl h-80">
-              <h3 class="mt-4 text-xl font-semibold text-gray-800">Dr. Lorenz Holmer</h3>
-              <p class="text-blue-600">Zahnarzt</p>
-              <p class="text-gray-500 mt-2">Dabei seit 5 Jahren</p>
-          </div>
-          <div class="text-center flex flex-col justify-center items-center">
-              <img src="{% static 'images/Portrait/LH Portrait.png' %}"
-                  alt="Polina Podolski" class="mx-auto rounded-tl-2xl rounded-br-2xl h-80">
-              <h3 class="mt-4 text-xl font-semibold text-gray-800">Dr. Lorenz Holmer</h3>
-              <p class="text-blue-600">Zahnarzt</p>
-              <p class="text-gray-500 mt-2">Dabei seit 5 Jahren</p>
-          </div>
-          <div class="text-center flex flex-col justify-center items-center">
-              <img src="{% static 'images/Portrait/LH Portrait.png' %}"
-                  alt="Polina Podolski" class="mx-auto rounded-tl-2xl rounded-br-2xl h-80">
-              <h3 class="mt-4 text-xl font-semibold text-gray-800">Dr. Lorenz Holmer</h3>
-              <p class="text-blue-600">Zahnarzt</p>
-              <p class="text-gray-500 mt-2">Dabei seit 5 Jahren</p>
-          </div>
-          <div class="text-center flex flex-col justify-center items-center">
-              <img src="{% static 'images/Portrait/LH Portrait.png' %}"
-                  alt="Polina Podolski" class="mx-auto rounded-tl-2xl rounded-br-2xl h-80">
-              <h3 class="mt-4 text-xl font-semibold text-gray-800">Dr. Lorenz Holmer</h3>
-              <p class="text-blue-600">Zahnarzt</p>
-              <p class="text-gray-500 mt-2">Dabei seit 5 Jahren</p>
-          </div>
-      </div>
-  </div>
-  <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-white to-gray-100"></div>
+        {% if teamMembers %}
+        <!-- Dentist Cards -->
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for member in teamMembers %}
+            <div class="text-center flex flex-col justify-center items-center">
+                <img src="{{ member.image }}" alt="{{ member.full_name }}"
+                    class="mx-auto rounded-tl-2xl rounded-br-2xl h-80">
+                <h3 class="mt-4 text-xl font-semibold text-gray-800">{{ member.full_name }}</h3>
+                <p class="text-blue-600">{{ member.position }}</p>
+                <p class="text-gray-500 mt-2">Dabei seit {{member.years_with_team}} Jahren</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-white to-gray-100"></div>
 </section>
 
 <section class="bg-gray-100 relative">
-  <div class="max-w-7xl mx-auto pt-8 pb-24 px-8">
-      <!-- Title and Appointment Button -->
-      <div class="text-center">
-          <h2 class="text-4xl font-semibold text-[#262C5D]">Unsere Kontakte</h2>
-          <p class="mt-4 text-gray-600 mb-6 text-lg">
-              Wir stehen Ihnen jederzeit zur Verfügung, um Ihre Fragen zu beantworten und Termine zu vereinbaren.
-          </p>
-      </div>
+    <div class="max-w-7xl mx-auto pt-8 pb-24 px-8">
+        <!-- Title and Appointment Button -->
+        <div class="text-center">
+            <h2 class="text-4xl font-semibold text-[#262C5D]">{% if contactText %}{{contactText.title}}{% else %}Unsere
+                Kontakte{% endif %}</h2>
+            <p class="mt-4 text-gray-600 mb-6 text-lg">
+                {% if contactText %}{{contactText.description}}{% else %}Wir stehen Ihnen jederzeit zur Verfügung, um
+                Ihre Fragen zu beantworten und Termine zu vereinbaren.{% endif %}
+            </p>
+        </div>
 
-      <!-- Google Map with contact details -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 z-50">
-          <!-- Google Map -->
-          <div class="relative h-[270px] md:h-full">
-              <iframe class="w-full h-full rounded-lg shadow-lg"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=14&maptype=roadmap&q=Dr. med. dent. Lorenz Holmer"
-                  allowfullscreen></iframe>
-          </div>
-          <!-- Contact Information -->
-          <div class="flex flex-col">
-              <!-- Work Time, Address, and Phone in one row -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <!-- Work Time -->
-                  <div>
-                      <h3 class="text-lg font-semibold mb-2">Öffnungszeiten:</h3>
-                      <ul class="text-gray-600">
-                          <li>Montag: 9 AM - 6 PM</li>
-                          <li>Dienstag: 10 AM - 7 PM</li>
-                          <li>Mittwoch: 8 AM - 5 PM</li>
-                          <li>Donnerstag: 11 AM - 8 PM</li>
-                          <li>Freitag: 9 AM - 4 PM</li>
-                          <li>Samstag: 10 AM - 2 PM</li>
-                          <li>Sonntag: Geschlossen</li>
-                      </ul>
-                  </div>
+        <!-- Google Map with contact details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 z-50">
+            <!-- Google Map -->
+            <div class="relative h-[270px] md:h-full">
+                <iframe class="w-full h-full rounded-lg shadow-lg"
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=14&maptype=roadmap&q=Dr. med. dent. Lorenz Holmer"
+                    allowfullscreen></iframe>
+            </div>
+            <!-- Contact Information -->
+            <div class="flex flex-col">
+                <!-- Work Time, Address, and Phone in one row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Work Time -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">Öffnungszeiten:</h3>
+                        <ul class="text-gray-600">
+                            <li class="flex">
+                                <span class="mr-1">Montag:</span>
+                                <span>
+                                    {% if opening_mon and opening_mon.is_open %}
+                                    {{ opening_mon.start_time }} - {{ opening_mon.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Dienstag:</span>
+                                <span>
+                                    {% if opening_tue and opening_tue.is_open %}
+                                    {{ opening_tue.start_time }} - {{ opening_tue.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Mittwoch:</span>
+                                <span>
+                                    {% if opening_wed and opening_wed.is_open %}
+                                    {{ opening_wed.start_time }} - {{ opening_wed.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Donnerstag:</span>
+                                <span>
+                                    {% if opening_thu and opening_thu.is_open %}
+                                    {{ opening_thu.start_time }} - {{ opening_thu.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Freitag:</span>
+                                <span>
+                                    {% if opening_fri and opening_fri.is_open %}
+                                    {{ opening_fri.start_time }} - {{ opening_fri.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Samstag:</span>
+                                <span>
+                                    {% if opening_sat and opening_sat.is_open %}
+                                    {{ opening_sat.start_time }} - {{ opening_sat.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Sonntag:</span>
+                                <span>
+                                    {% if opening_sun and opening_sun.is_open %}
+                                    {{ opening_sun.start_time }} - {{ opening_sun.end_time }}
+                                    {% else %}
+                                    Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
 
-                  <!-- Address and Phone stacked under each other -->
-                  <div>
-                      <!-- Address -->
-                      <h3 class="text-lg font-semibold mb-2">Adresse:</h3>
-                      <p class="text-gray-600">LA, Vehicula Street, 58</p>
+                    <!-- Address and Phone stacked under each other -->
+                    <div>
+                        <!-- Address -->
+                        <h3 class="text-lg font-semibold mb-2">Adresse:</h3>
+                        <p class="text-gray-600">{% if owner_data and owner_data.address %}{{owner_data.address}}{% else
+                            %}Deggendorfer Str. 50A, 94447 Plattling{%endif%}</p>
 
-                      <!-- Phone -->
-                      <h3 class="text-lg font-semibold mt-4 mb-2">Telefon:</h3>
-                      <p class="text-gray-600 mb-6">+123 6897 8974</p>
+                        <!-- Phone -->
+                        <h3 class="text-lg font-semibold mt-4 mb-2">Telefon:</h3>
+                        <p class="text-gray-600 mb-6">{% if owner_data and owner_data.tel_number
+                            %}{{owner_data.tel_number}}{% else %}+123 6897 8974{% endif %}</p>
 
-                      <a href="#notdienst"
-                          class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
-                          Notdienst
-                      </a>
-                  </div>
-              </div>
+                        <a href="{% if owner_data and owner_data.emergencyURL %}{{owner_data.emergencyURL}}{% else %}#{% endif %}"
+                            class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+                            Notdienst
+                        </a>
+                    </div>
+                </div>
 
-              <!-- Contact Form -->
-              <form action="#" class="space-y-4 mt-8">
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <input type="text" placeholder="Name"
-                          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                      <input type="email" placeholder="E-Mail"
-                          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                  </div>
-                  <textarea placeholder="Nachricht" rows="4"
-                      class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
-                      <div class="flex justify-between md:justify-end md:space-x-6">
-                          <!-- "Termin vereinbaren" - Visible only on medium and larger screens -->
-                          <a href="#notdienst"
-                              class="hidden md:inline-block bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
-                              Termin vereinbaren
-                          </a>
-                      
-                          <!-- "Termin" - Visible only on small screens -->
-                          <a href="#notdienst"
-                              class="block md:hidden bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
-                              Termin
-                          </a>
-                      
-                          <!-- "Senden" - Always visible -->
-                          <a href="#notdienst"
-                              class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
-                              Senden
-                          </a>
-                      </div>                                
-              </form>
-          </div>
-      </div>
-  </div>
-  <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-gray-100 to-white"></div>
+                <!-- Contact Form -->
+                <form action="#" class="space-y-4 mt-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Name"
+                            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        <input type="email" placeholder="E-Mail"
+                            class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <textarea placeholder="Nachricht" rows="4"
+                        class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
+                    <div class="flex justify-between md:justify-end md:space-x-6">
+                        <!-- "Termin vereinbaren" - Visible only on medium and larger screens -->
+                        <a href="{% if owner_data and owner_data.appointmentURL %}{{owner_data.appointmentURL}}{% else %}#{% endif %}"
+                            class="hidden md:inline-block bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+                            Termin vereinbaren
+                        </a>
+
+                        <!-- "Termin" - Visible only on small screens -->
+                        <a href="{% if owner_data and owner_data.appointmentURL %}{{owner_data.appointmentURL}}{% else %}#{% endif %}
+                              class=" block md:hidden bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow
+                            hover:bg-blue-700">
+                            Termin
+                        </a>
+
+                        <!-- "Senden" - Always visible -->
+                        <a href="#" class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+                            Senden
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-0 w-full h-20 bg-gradient-to-b from-gray-100 to-white"></div>
 </section>
 
 <section itemscope itemtype="https://schema.org/FAQPage" class="py-5 md:py-10">
-  <div class="bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-4xl font-semibold text-[#262C5D]">FAQs</h2>
-          <p class="text-gray-600 mb-8 mt-4 text-lg">
-              Quisque sodales nibh odio, vel accumsan odio luctus vel. Nam in lorem ac sem porttitor placerat
-              at interdum leo.
-          </p>
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-[#262C5D]">{% if faqText %}{{faqText.title}}{% else %}FAQs{% endif %}
+            </h2>
+            <p class="text-gray-600 mb-8 mt-4 text-lg">
+                {% if faqText %}{{faqText.description}}{% else %}Quisque sodales nibh odio, vel accumsan odio luctus
+                vel. Nam in lorem ac sem porttitor placerat
+                at interdum leo.{% endif %}
+            </p>
 
-
-          <!-- FAQ Item 1 -->
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-              class="border-b border-gray-200">
-              <button
-                  class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
-                  <h3 itemprop="name" class="font-semibold">Wie oft sollte ich zur Zahnkontrolle
-                      gehen?</h3>
-                  <span class="faq-toggle text-gray-500">+</span>
-              </button>
-              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                  class="faq-answer py-2 text-gray-500">
-                  <p itemprop="text">
-                      Es wird empfohlen, mindestens zweimal im Jahr zur zahnärztlichen Kontrolle zu gehen. So
-                      können potenzielle Probleme frühzeitig erkannt und behandelt werden.
-                  </p>
-              </div>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-              class="border-b border-gray-200">
-              <button
-                  class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
-                  <h3 itemprop="name" class="font-semibold">Sind Zahnreinigungen schmerzhaft?</h3>
-                  <span class="faq-toggle text-gray-500">+</span>
-              </button>
-              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                  class="faq-answer py-2 text-gray-500">
-                  <p itemprop="text">
-                      Eine professionelle Zahnreinigung ist in der Regel nicht schmerzhaft. Einige Patienten
-                      können leichte Empfindlichkeiten spüren, aber unsere geschulten Fachkräfte sorgen dafür,
-                      dass Sie sich so wohl wie möglich fühlen.
-                  </p>
-              </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-              class="border-b border-gray-200">
-              <button
-                  class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
-                  <h3 itemprop="name" class="font-semibold">Bieten Sie Notfallbehandlungen an?</h3>
-                  <span class="faq-toggle text-gray-500">+</span>
-              </button>
-              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                  class="faq-answer py-2 text-gray-500">
-                  <p itemprop="text">
-                      Ja, wir bieten Notfallbehandlungen an. Wenn Sie Zahnschmerzen, einen abgebrochenen Zahn
-                      oder andere dringende Probleme haben, kontaktieren Sie uns bitte sofort, und wir werden
-                      unser Bestes tun, um Ihnen schnell zu helfen.
-                  </p>
-              </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-              class="border-b border-gray-200">
-              <button
-                  class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
-                  <h3 itemprop="name" class="font-semibold">Was kostet eine professionelle
-                      Zahnreinigung?</h3>
-                  <span class="faq-toggle text-gray-500">+</span>
-              </button>
-              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                  class="faq-answer py-2 text-gray-500">
-                  <p itemprop="text">
-                      Die Kosten für eine professionelle Zahnreinigung variieren je nach individuellen
-                      Bedürfnissen und Umfang der Behandlung. Bitte kontaktieren Sie uns für detaillierte
-                      Informationen zu unseren Preisen und eventuellen Versicherungsabdeckungen.
-                  </p>
-              </div>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-              class="border-b border-gray-200">
-              <button
-                  class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
-                  <h3 itemprop="name" class="font-semibold">Was kann ich gegen Zahnfleischbluten tun?</h3>
-                  <span class="faq-toggle text-gray-500">+</span>
-              </button>
-              <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
-                  class="faq-answer py-2 text-gray-500">
-                  <p itemprop="text">
-                      Zahnfleischbluten kann ein Zeichen für Gingivitis oder Parodontitis sein. Wir empfehlen
-                      eine gründliche Mundhygiene und regelmäßige Besuche bei Ihrem Zahnarzt. Bei anhaltendem
-                      Zahnfleischbluten sollten Sie einen Termin vereinbaren, damit wir die Ursache abklären
-                      und die passende Behandlung einleiten können.
-                  </p>
-              </div>
-          </div>
-      </div>
-  </div>
+            {% for faq in FAQ %}
+            <!-- FAQ Item 1 -->
+            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
+                class="border-b border-gray-200">
+                <button
+                    class="faq-question w-full text-left py-4 flex items-center justify-between text-gray-700 focus:outline-none">
+                    <h3 itemprop="name" class="font-semibold">{{ faq.question }}</h3>
+                    <span class="faq-toggle text-gray-500">+</span>
+                </button>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"
+                    class="faq-answer py-2 text-gray-500">
+                    <p itemprop="text">
+                        {{ faq.answer }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 
 

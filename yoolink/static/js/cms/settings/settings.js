@@ -9,6 +9,8 @@ $(document).ready(function() {
         var fax_number = $('#fax_number').val();
         var mobile_number = $('#mobile_number').val();
         var website = $('#website').val();
+        var appointment = $('#appointment').val();
+        var emergency = $('#emergency').val();
         var address = $('#address').val();
         var global_font = $('#global_font').val();
 
@@ -26,6 +28,8 @@ $(document).ready(function() {
                 'website': website,
                 'address': address,
                 'global_font': global_font,
+                'appointment': appointment,
+                'emergency': emergency,
                 'csrfmiddlewaretoken': csrfToken
             },
             success: function(response) {

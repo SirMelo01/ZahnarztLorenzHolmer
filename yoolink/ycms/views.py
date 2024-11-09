@@ -602,48 +602,56 @@ def site_view_main_hero(request):
     data = {}
     if TextContent.objects.filter(name="main_hero").exists():
         data["textContent"] = TextContent.objects.get(name='main_hero')
-    if Galerie.objects.filter(place='main_hero').exists():
-        data["heroImages"] = Galerie.objects.get(place='main_hero').images.all()
+    if fileentry.objects.filter(place='main_hero').exists():
+        data["heroImage"] = fileentry.objects.get(place='main_hero')
         
     return render(request, "pages/cms/content/sites/mainsite/HeroContent.html", data)
 
 @login_required(login_url='login')
-def site_view_main_responsive(request):
+def site_view_main_services(request):
     data = {}
-    if TextContent.objects.filter(name="main_responsive").exists():
-        data["textContent"] = TextContent.objects.get(name='main_responsive')
-
-    if Galerie.objects.filter(place='main_responsive_desktop').exists():
-        data['responsiveDesktopImages'] = Galerie.objects.get(place='main_responsive_desktop').images.all()
+    if TextContent.objects.filter(name="main_service").exists():
+        data["textContent"] = TextContent.objects.get(name='main_service')
         
-    if Galerie.objects.filter(place='main_responsive_handy').exists():
-        data['responsiveHandyImages'] = Galerie.objects.get(place='main_responsive_handy').images.all()
-
-    return render(request, "pages/cms/content/sites/mainsite/ResponsiveContent.html", data)
+    return render(request, "pages/cms/content/sites/mainsite/ServiceSection.html", data)
 
 @login_required(login_url='login')
-def site_view_main_cms(request):
+def site_view_main_services_1(request):
     data = {}
-    if TextContent.objects.filter(name="main_cms").exists():
-        data["textContent"] = TextContent.objects.get(name='main_cms')
-    if fileentry.objects.filter(place='main_cms').exists():
-        data["cmsImage"] = fileentry.objects.get(place='main_cms')
-    return render(request, "pages/cms/content/sites/mainsite/CmsContent.html", data)
+    if TextContent.objects.filter(name="main_service_1").exists():
+        data["textContent"] = TextContent.objects.get(name='main_service_1')
 
-@login_required(login_url='login')
-def site_view_main_price(request):
-    data = {}
-    if TextContent.objects.filter(name="main_price").exists():
-        data["textContent"] = TextContent.objects.get(name='main_price')
-    return render(request, "pages/cms/content/sites/mainsite/PriceContent.html", data)
+    if fileentry.objects.filter(place='main_service_1_prev').exists():
+        data["prevImage"] = fileentry.objects.get(place='main_service_1_prev')
+
+    if fileentry.objects.filter(place='main_service_1_after').exists():
+        data["afterImage"] = fileentry.objects.get(place='main_service_1_after')
+        
+    return render(request, "pages/cms/content/sites/mainsite/services/Service1Content.html", data)
 
 @login_required(login_url='login')
 def site_view_main_team(request):
     data = {}
     if TextContent.objects.filter(name="main_team").exists():
         data["textContent"] = TextContent.objects.get(name='main_team')
-
+        
     return render(request, "pages/cms/content/sites/mainsite/TeamContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_contact(request):
+    data = {}
+    if TextContent.objects.filter(name="main_contact").exists():
+        data["textContent"] = TextContent.objects.get(name='main_contact')
+        
+    return render(request, "pages/cms/content/sites/mainsite/ContactContent.html", data)
+
+@login_required(login_url='login')
+def site_view_main_faq(request):
+    data = {}
+    if TextContent.objects.filter(name="main_faq").exists():
+        data["textContent"] = TextContent.objects.get(name='main_faq')
+        
+    return render(request, "pages/cms/content/sites/mainsite/FaqContent.html", data)
 
 
 @login_required(login_url='login')
@@ -1704,6 +1712,8 @@ def user_settings_update(request):
         user_settings.website = request.POST.get('website', '')
         user_settings.address = request.POST.get('address', '')
         user_settings.global_font = request.POST.get('global_font', '')
+        user_settings.appointmentURL = request.POST.get('appointment', '')
+        user_settings.emergencyURL = request.POST.get('emergency', '')
 
         # Save the updated user settings
         user_settings.save()

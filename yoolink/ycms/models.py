@@ -365,7 +365,7 @@ class Message(models.Model):
 class TextContent(models.Model):
     name = models.CharField(max_length=50, default="", unique=True)
     header = models.CharField(max_length=100, default="")
-    title = models.CharField(max_length=140, default="")
+    title = models.CharField(max_length=180, default="")
     description = models.TextField(default="")
     buttonText = models.CharField(max_length=120, default="")
 
@@ -383,6 +383,8 @@ class UserSettings(models.Model):
     vacation = models.BooleanField(default=False)
     vacationText = models.CharField(max_length=200, default='Wir sind aktuell im Urlaub. Ab dem XX.XX sind wir wieder für Sie da!')
     global_font = models.CharField(max_length=60, default='font-sans')
+    appointmentURL = models.URLField(blank=True, default='')
+    emergencyURL = models.URLField(blank=True, default='')
 
     def __str__(self):
         return f"{self.full_name}'s Einstellungen"

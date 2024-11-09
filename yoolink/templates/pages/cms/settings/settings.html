@@ -45,11 +45,19 @@
           <label class="mb-1 block w-40 self-center pr-4 font-bold text-gray-500 md:mb-1" for="title"> Website </label>
           <input value="{{settings.website}}" class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="website" type="text"  placeholder="https://sam-smith.de" />
         </div>
+        <div class="my-2">
+          <label class="mb-1 block w-40 self-center pr-4 font-bold text-gray-500 md:mb-1" for="title"> Termin URL </label>
+          <input value="{{settings.appointmentURL}}" class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="appointment" type="text"  placeholder="https://yoolink.de" />
+        </div>
+        <div class="my-2">
+          <label class="mb-1 block w-40 self-center pr-4 font-bold text-gray-500 md:mb-1" for="title"> Notfall URL </label>
+          <input value="{{settings.emergencyURL}}" class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="emergency" type="text"  placeholder="https://yoolink.de" />
+        </div>
         <div class="my-2 col-span-2">
           <label class="mb-1 block w-80 self-center pr-4 font-bold text-gray-500 md:mb-1" for="title"> Adresse </label>
           <input value="{{settings.address}}" class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="address" type="text"  placeholder="Unternehmensweg 2, 29299 Wohrt" />
         </div>
-        <div class="my-2 col-span-2">
+        <div class="my-2">
           <label class="mb-1 block w-80 self-center pr-4 font-bold text-gray-500 md:mb-1" for="global_font">Globale Schriftart</label>
           <select class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="global_font" name="global_font">
               <option value="" {% if settings.global_font == "" %}selected{% endif %}>Keine</option>
@@ -57,7 +65,7 @@
               <option value="font-serif" {% if settings.global_font == "font-serif" %}selected{% endif %}>Serif</option>
               <option value="font-mono" {% if settings.global_font == "font-mono" %}selected{% endif %}>Monospace</option>
           </select>
-      </div>      
+        </div>      
       </form>
     </div>
   </div>
