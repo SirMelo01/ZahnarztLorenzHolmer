@@ -33,8 +33,8 @@ https://www.youtube.com/watch?v=DLxcyndCvO4
         $ docker-compose -f production.yml up
 
 ### Django Migrations:
-        $ docker-compose -f production.yml run --rm django python manage.py migrate
         $ docker-compose -f production.yml run --rm django python manage.py makemigrations
+        $ docker-compose -f production.yml run --rm django python manage.py migrate
 
 ### Superuser erstellen:
         $ docker-compose -f production.yml run --rm django python manage.py createsuperuser
