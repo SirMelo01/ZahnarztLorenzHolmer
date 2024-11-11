@@ -3,32 +3,28 @@
 {% block title %}{{block.super}} | Impressum{% endblock title %}
 
 {% block content %}
-<div class="container pt-28 w-full mx-auto px-2 md:px-40">
+<div class="container pt-10 w-full mx-auto px-2 md:px-40">
   <div>
     <h1 class="text-3xl font-bold tracki text-center sm:text-5xl text-gray-900">Impressum</h1>
   </div>
   <div class="mt-8">
-    <h2 class="text-lg md:text-2xl">HD-Glas</h2>
-    <p>Adresse: {% if owner_data and owner_data.address %}{{address}}{% else %}Deggendorfer Str. 36, 94447 Plattling{% endif %}</p>
-    <p>Telefon: {% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+49 160 95066848{% endif %}</p>
-    <p>E-Mail: {% if owner_data and owner_data.email %}{{owner_data.email}}{% else %}andreas@hd-glas.de{% endif %}</p>
+    <h2 class="text-lg md:text-2xl">Herausgeber und Inhaber dieser Webseite</h2>
+    <p>Zahnarztpraxis Dr. {% if owner_data and owner_data.full_name %}{{owner_data.full_name}}{% else %}Lorenz Holmer{% endif %}</p>
   </div>
   <div class="mt-6">
-    <h2 class="text-lg md:text-2xl">Geschäftsführung</h2>
-    {% if owner_data and owner_data.full_name %}{{owner_data.full_name}}{% else %}Andreas Ledaev{% endif %}
+    <h2 class="text-lg md:text-2xl">Anschrift</h2>
+    <p>{% if owner_data and owner_data.full_name %}{{owner_data.full_name}}{% else %}Lorenz Holmer{% endif %}</p>
+    <p>{% if owner_data and owner_data.address %}{{owner_data.address}}{% else %}Deggendorfer Str. 50A 94447 Plattling{% endif %}</p>
   </div>
   <div class="mt-6">
-    <h2 class="text-lg md:text-2xl">Registergericht</h2>
-    <p>Amtsgericht ____</p>
-    <p>HRB ____</p>
+    <h2 class="text-lg md:text-2xl">Kontakt</h2>
+    <p>Geschäftsführer: {% if owner_data and owner_data.full_name %}{{owner_data.full_name}}{% else %}Lorenz Holmer{% endif %}</p>
+    <p>Telefon: {% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}09931 2100{% endif %}</p>
+    <p>E-Mail: {% if owner_data and owner_data.email %}{{owner_data.email}}{% else %}info@dr-holmer.de{% endif %}</p>
   </div>
   <div class="mt-6">
-    <h2 class="text-lg md:text-2xl">St.-Nr:</h2>
-    <p>108/244/00925</p>
-  </div>
-  <div class="mt-6">
-    <h2 class="text-lg md:text-2xl">Ust-IdNr.</h2>
-    <p>84657120927</p>
+    <h2 class="text-lg md:text-2xl">Berufsbezeichnung</h2>
+    <p>Zahnarzt</p>
   </div>
   <div class="mt-6">
     <h2 class="text-lg md:text-2xl">Haftungshinweis</h2>
@@ -37,8 +33,8 @@
   </div>
   <div class="mt-6">
     <h2 class="text-lg md:text-2xl">Copyright</h2>
-    <p>© HDGlas. Alle Rechte vorbehalten.</p>
-    <p>Text, Bilder, Grafiken, Sound, Animationen und Videos unterliegen dem Schutz des Urheberrechtes und anderer Schutzgesetze. Der Inhalt dieser Websites darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden. Einige HDGlas - Websites enthalten außerdem Bilder, die dem Copyright Dritter unterliegen.
+    <p>© Lorenz Holmer. Alle Rechte vorbehalten.</p>
+    <p>Text, Bilder, Grafiken, Sound, Animationen und Videos unterliegen dem Schutz des Urheberrechtes und anderer Schutzgesetze. Der Inhalt dieser Websites darf nicht zu kommerziellen Zwecken kopiert, verbreitet, verändert oder Dritten zugänglich gemacht werden.
     </p>
   </div>
   <div class="mt-6 mb-8">
