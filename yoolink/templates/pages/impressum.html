@@ -9,7 +9,7 @@
   </div>
   <div class="mt-8">
     <h2 class="text-lg md:text-2xl">HD-Glas</h2>
-    <p>Adresse: {% if adresse %}{{adresse}}{% else %}Deggendorfer Str. 36, 94447 Plattling{% endif %}</p>
+    <p>Adresse: {% if owner_data and owner_data.address %}{{address}}{% else %}Deggendorfer Str. 36, 94447 Plattling{% endif %}</p>
     <p>Telefon: {% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+49 160 95066848{% endif %}</p>
     <p>E-Mail: {% if owner_data and owner_data.email %}{{owner_data.email}}{% else %}andreas@hd-glas.de{% endif %}</p>
   </div>
