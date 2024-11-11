@@ -120,8 +120,10 @@ def impressum(request):
     user_settings = UserSettings.objects.filter(user__is_staff=False)
     if user_settings.exists():
         user_settings = user_settings.first()
+        adresse = user_settings.address
         context = {
-            'user_settings': user_settings
+            'user_settings': user_settings,
+            'adresse': adresse
         }
 
     return render(request, 'pages/impressum.html', context)
