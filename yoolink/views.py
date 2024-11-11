@@ -111,3 +111,21 @@ def detail(request, product_id, slug):
     context={"product": product}
     context.update(get_opening_hours())
     return render(request, 'pages/detail.html', context)
+
+
+
+def impressum(request):
+    context = {}
+
+                
+    user_settings = UserSettings.objects.filter(user__is_staff=False)
+    if user_settings.exists():
+        user_settings = user_settings.first()
+        context.update(user_settings)
+
+    return render(request, 'pages/impressum.html', context)
+
+def datenschutz(request):
+    context = {}
+    context.update(get_opening_hours())
+    return render(request, 'pages/datenschutz.html', context)
