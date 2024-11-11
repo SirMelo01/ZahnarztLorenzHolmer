@@ -117,11 +117,12 @@ def detail(request, product_id, slug):
 def impressum(request):
     context = {}
 
-                
     user_settings = UserSettings.objects.filter(user__is_staff=False)
     if user_settings.exists():
         user_settings = user_settings.first()
-        context.update(user_settings)
+        context = {
+            'user_settings': user_settings
+        }
 
     return render(request, 'pages/impressum.html', context)
 
