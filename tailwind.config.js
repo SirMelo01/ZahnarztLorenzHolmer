@@ -51,7 +51,10 @@ module.exports = {
       },
       animation: {
         "fade-in-down": "fade-in-down 1.2s ease-out",
-      }
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [],
