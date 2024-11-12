@@ -10,8 +10,7 @@ $(document).ready(function() {
    * Email Form submit Function (index page)
    * How to use: Compare wukschweiss project
    */
-  $('#emailForm').submit(function(event) {
-    event.preventDefault(); // Prevent the default form submission
+  $('#submitForm').click(function() {
     console.log("EMAIL FORM")
     var formData = {
         name: $('#name').val(),
@@ -34,8 +33,11 @@ $(document).ready(function() {
         },
         error: function(xhr, status, error) {
             // Handle error response here
-            sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
-        }
+            setTimeout(() => {
+              sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
+            }, 3000)
+            
+        },
     });
 });
 
