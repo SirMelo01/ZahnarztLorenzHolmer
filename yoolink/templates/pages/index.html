@@ -461,14 +461,16 @@
                 </div>
 
                 <!-- Contact Form -->
-                <form action="#" class="space-y-4 mt-8">
+                <form id="emailForm" method="POST" class="space-y-4 mt-8">
+                    {% csrf_token%}
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input type="text" placeholder="Name"
+                        <input id="name" name="name" type="text" placeholder="Name"
                             class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
-                        <input type="email" placeholder="E-Mail"
+                        <input id="email" name="email" type="email" placeholder="E-Mail"
                             class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
                     </div>
-                    <textarea placeholder="Nachricht" rows="4"
+                    <input id="title" name="title" value="Kontaktanfrage" hidden>
+                    <textarea id="message" name="message" placeholder="Nachricht" rows="4"
                         class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"></textarea>
                     <div class="flex justify-between md:justify-end md:space-x-6">
                         <!-- "Termin vereinbaren" - Visible only on medium and larger screens -->
@@ -482,11 +484,11 @@
                               class=" block md:hidden bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
                             Termin
                         </a>
-
+                        {{ form.captcha }}
                         <!-- "Senden" - Always visible -->
-                        <a href="#" class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
+                        <button type="submit" class="bg-[#262C5D] text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700">
                             Senden
-                        </a>
+                        </button>
                     </div>
                 </form>
             </div>

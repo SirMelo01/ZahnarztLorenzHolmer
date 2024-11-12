@@ -7,7 +7,7 @@ $(document).ready(function() {
             $('#sliderImageSection').show();
             $('#singleImageSection').hide();
 
-            // Entfernt content-image von den Vergleichsbildern und fügt es dem Einzelbild hinzu
+            // Entfernt content-image vom Einzelbild und fügt es den Vergleichsbildern hinzu
             $('#sliderImageSection img').addClass('content-image');
             $('#singleImageSection img').removeClass('content-image');
 
@@ -18,12 +18,13 @@ $(document).ready(function() {
             $('#sliderImageSection').hide();
             $('#singleImageSection').show();
 
-            // Entfernt content-image vom Einzelbild und fügt es den Vergleichsbildern hinzu
+            // Entfernt content-image von den Vergleichsbildern und fügt es dem Einzelbild hinzu
             $('#singleImageSection img').addClass('content-image');
             $('#sliderImageSection img').removeClass('content-image');
 
             // Setzt den Key von afterImage auf "nothing"
             $('#afterImage').attr('key', 'nothing');
+            $('#afterImage').addClass('content-image');
         }
     });
 
@@ -40,5 +41,6 @@ $(document).ready(function() {
         $('#singleImageSection img').addClass('content-image');
         $('#sliderImageSection img').removeClass('content-image');
         $('#afterImage').attr('key', 'nothing');
+        $('#afterImage').addClass('content-image');
     }
 });

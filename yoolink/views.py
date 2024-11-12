@@ -72,6 +72,9 @@ def load_index(request):
     active_team_members = TeamMember.objects.filter(active=True)
     context['teamMembers'] = active_team_members
 
+    form = ContactForm()
+    context['form'] = form
+
     context.update(get_opening_hours())
 
     return render(request, 'pages/index.html', context=context)
