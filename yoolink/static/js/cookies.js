@@ -1,77 +1,64 @@
-var form = document.querySelector("form");
-var cookieslider = document.getElementById("cookie");
-var analyticslider = document.getElementById("analytics");
-var fontslider = document.getElementById("font");
+$(document).ready(function() {
+  var $form = $("form");
+  var $cookieslider = $("#cookie");
+  var $mapslider = $("#map");
+  var $fontslider = $("#font");
 
-function cookiereload2() {
-  if (cookieslider.checked === true) {
+  function cookiereload2() {
     document.cookie =
-      "Cookie-Consent=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  } else {
+      "Cookie-Consent=" + ($cookieslider.is(":checked") ? "true" : "false") +
+      "; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+
     document.cookie =
-      "Cookie-Consent=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+      "Cookie-Map=" + ($mapslider.is(":checked") ? "true" : "false") +
+      "; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+
+    document.cookie =
+      "Cookie-Font=" + ($fontslider.is(":checked") ? "true" : "false") +
+      "; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   }
 
-  if (analyticslider.checked === true) {
-    document.cookie =
-      "Cookie-Analytic=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  } else {
-    document.cookie =
-      "Cookie-Analytic=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  }
-
-  if (fontslider.checked === true) {
-    document.cookie =
-      "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  } else {
-    document.cookie =
-      "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  }
-}
-
-onload = function () {
+  // Onload functionality
   if (cookieselect === "true") {
-    cookieslider.checked = true;
+    $cookieslider.prop("checked", true);
   }
-
-  if (cookieanalyticselect === "true") {
-    analyticslider.checked = true;
+  if (cookiemapselect === "true") {
+    $mapslider.prop("checked", true);
   }
-
   if (cookiefontselect === "true") {
-    fontslider.checked = true;
+    $fontslider.prop("checked", true);
   }
-};
 
-cookieslider.addEventListener("change", (e) => {
-  if (cookieslider.checked === true) {
-    analyticslider.checked = true;
-    fontslider.checked = true;
-  } else {
-    analyticslider.checked = false;
-    fontslider.checked = false;
-  }
-  cookiereload2();
-});
-
-analyticslider.addEventListener("change", (e) => {
-  if (analyticslider.checked === true) {
-    if (fontslider.checked === true) {
-      cookieslider.checked = true;
+  $cookieslider.on("change", function() {
+    if ($cookieslider.is(":checked")) {
+      $mapslider.prop("checked", true);
+      $fontslider.prop("checked", true);
+    } else {
+      $mapslider.prop("checked", false);
+      $fontslider.prop("checked", false);
     }
-  } else {
-    cookieslider.checked = false;
-  }
-  cookiereload2();
-});
+    cookiereload2();
+  });
 
-fontslider.addEventListener("change", (e) => {
-  if (fontslider.checked === true) {
-    if (analyticslider.checked === true) {
-      cookieslider.checked = true;
+  $mapslider.on("change", function() {
+    if ($mapslider.is(":checked")) {
+      if ($fontslider.is(":checked")) {
+        $cookieslider.prop("checked", true);
+      }
+    } else {
+      $cookieslider.prop("checked", false);
     }
-  } else {
-    cookieslider.checked = false;
-  }
-  cookiereload2();
+    cookiereload2();
+  });
+
+  $fontslider.on("change", function() {
+    if ($fontslider.is(":checked")) {
+      if ($mapslider.is(":checked")) {
+        $cookieslider.prop("checked", true);
+      }
+    } else {
+      $cookieslider.prop("checked", false);
+    }
+    cookiereload2();
+  });
 });

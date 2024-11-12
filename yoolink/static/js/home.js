@@ -36,12 +36,10 @@ $(document).ready(function() {
         }
     });
 });
-});
 
-// Commented because this website has no map
 /*setTimeout(() => {
   if (cookiemapselect !== null && cookiemapselect !== "false") {
-    map = L.map("map");
+    let map = L.map("map");
     map.on("focus", function () {
       map.scrollWheelZoom.enable();
     });
@@ -49,6 +47,28 @@ $(document).ready(function() {
       map.scrollWheelZoom.disable();
     });
   }
-  mapLoad();
+  
 }, 500);*/
 
+mapLoad();
+
+});
+
+
+
+function mapLoad() {
+  if (cookiemapselect === null || cookiemapselect === "false") {
+    $('#covermap').removeClass('hidden');
+    $('#map').addClass('hidden');
+  } else {
+    $('#covermap').addClass('hidden');
+    $('#map').removeClass('hidden');
+
+    // Load the iframe into the #map div
+    $('#map').removeClass('hidden').html(`
+      <iframe class="w-full h-full rounded-lg shadow-lg"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=14&maptype=roadmap&q=Dr. med. dent. Lorenz Holmer"
+              allowfullscreen></iframe>
+    `);
+  }
+}
