@@ -56,7 +56,7 @@
                 <p class="text-center text-gray-700 font-semibold mb-2">Bild vorher</p>
                 <div class="relative">
                     <img src="{% if prevImage %}{{ prevImage.file.url }}{% else %}{% static 'images/designImg/filler.png' %}{% endif %}"
-                    alt="Bild vorher" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_prev">
+                    alt="Bild vorher" imgId="{% if prevImage %}{{prevImage.id}}{% endif %}" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_prev">
                     <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img">
                         <i class="bi bi-pencil-square"></i>
                     </span>
@@ -67,7 +67,7 @@
                 <p class="text-center text-gray-700 font-semibold mb-2">Bild nachher</p>
                 <div class="relative">
                     <img src="{% if afterImage %}{{ afterImage.file.url }}{% else %}{% static 'images/designImg/filler.png' %}{% endif %}"
-                    alt="Bild nachher" id="afterImage" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_after">
+                    alt="Bild nachher" imgId="{% if afterImage %}{{afterImage.id}}{% endif %}" id="afterImage" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_after">
                     <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img">
                         <i class="bi bi-pencil-square"></i>
                     </span>
@@ -80,7 +80,7 @@
         <div id="singleImageSection" class="flex justify-center mt-12" {% if prevImage and afterImage %}style="display: none;" {% endif %}>
             <div class="relative">
                 <img src="{% if prevImage %}{{ prevImage.file.url }}{% else %}{% static 'images/designImg/filler.png' %}{% endif %}"
-                alt="Einzelbild" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_prev">
+                alt="Einzelbild" imgId="{% if prevImage %}{{prevImage.id}}{% endif %}" class="rounded-lg shadow-md max-w-full content-image" key="main_service_1_prev">
                 <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img">
                     <i class="bi bi-pencil-square"></i>
                 </span>
