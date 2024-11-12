@@ -1,23 +1,23 @@
 
 
-var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
-var csrfToken = csrfTokenInput ? csrfTokenInput.value : undefined;
+
 
 // JQuery functions
 $(document).ready(function() {
+  var csrfTokenInput = document.querySelector('input[name="csrfmiddlewaretoken"]');
+  var csrfToken = csrfTokenInput ? csrfTokenInput.value : undefined;
   /**
    * Email Form submit Function (index page)
    * How to use: Compare wukschweiss project
    */
   $('#emailForm').submit(function(event) {
-    console.log("Submit emailForm")
     event.preventDefault(); // Prevent the default form submission
     var formData = {
         name: $('#name').val(),
         email: $('#email').val(),
         title: $('#subject').val(),
         message: $('#message').val(),
-        csrfmiddlewaretoken: csrftoken,
+        csrfmiddlewaretoken: csrfToken,
     };
     // Send form data to the server using AJAX
     $.ajax({
@@ -25,7 +25,6 @@ $(document).ready(function() {
         url: '/cms/email/request/',
         data: formData,
         success: function(response) {
-          console.log("Success Form")
             // Handle successful response here
             if(response.success) {
               sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
