@@ -10,6 +10,7 @@ $(document).ready(function() {
    * How to use: Compare wukschweiss project
    */
   $('#emailForm').submit(function(event) {
+    console.log("Submit emailForm")
     event.preventDefault(); // Prevent the default form submission
     var formData = {
         name: $('#name').val(),
@@ -24,6 +25,7 @@ $(document).ready(function() {
         url: '/cms/email/request/',
         data: formData,
         success: function(response) {
+          console.log("Success Form")
             // Handle successful response here
             if(response.success) {
               sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
