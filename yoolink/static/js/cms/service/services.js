@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    let originalAfterImageKey = $('#afterImage').attr('key');
+    let originalAfterImageKey = $('#afterImage').attr('data-original-key');
     // Event Listener für den Switch
     $('#comparisionSwitch').on('change', function() {
         if ($(this).is(':checked')) {
