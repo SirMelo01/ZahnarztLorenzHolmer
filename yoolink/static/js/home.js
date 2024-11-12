@@ -10,36 +10,28 @@ $(document).ready(function() {
    * Email Form submit Function (index page)
    * How to use: Compare wukschweiss project
    */
-  $('#submitForm').click(function() {
-    console.log("EMAIL FORM")
-    var formData = {
-        name: $('#name').val(),
-        email: $('#email').val(),
-        title: $('#title').val(),
-        message: $('#message').val(),
-        csrfmiddlewaretoken: csrfToken,
-    };
+  $('#emailForm').submit(function (event) {
+    event.preventDefault(); // Prevent the default form submission
+    console.log("Sende email...")
     // Send form data to the server using AJAX
     $.ajax({
-        type: 'POST',
-        url: '/cms/email/request/',
-        data: formData,
-        success: function(response) {
-            // Handle successful response here
-            if(response.success) {
-              sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
-            }
-            $('#emailForm')[0].reset();
-        },
-        error: function(xhr, status, error) {
-            // Handle error response here
-            setTimeout(() => {
-              sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
-            }, 3000)
-            
-        },
+      type: 'POST',
+      url: '/cms/email/request/',
+      data: $("#emailForm").serialize(),
+      success: function (response) {
+        // Handle successful response here
+        if (response.success) {
+          sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
+        }
+        $('#emailForm')[0].reset();
+      },
+      error: function (xhr, status, error) {
+        // Handle error response here
+        console.error('Form submission failed');
+        sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
+      }
     });
-});
+  });
 
 /*setTimeout(() => {
   if (cookiemapselect !== null && cookiemapselect !== "false") {
