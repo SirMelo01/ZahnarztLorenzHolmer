@@ -1,18 +1,24 @@
 window.onload = function () {
-  setTimeout(() => {
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const mainContent = document.getElementById('main-content');
-
-    // Fade-Out Effekt
-    welcomeScreen.style.opacity = '0';
-
-    // Hauptinhalt anzeigen nach dem Fade-Out
+  if(cookiestart === "false") {
     setTimeout(() => {
-      welcomeScreen.style.display = 'none';
-      mainContent.style.display = 'block';
-    }, 1300); // Zeit für den Fade-Out (2.5 Sekunden)
-  }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
+      const welcomeScreen = document.getElementById('welcome-screen');
+      const mainContent = document.getElementById('main-content');
+  
+      // Fade-Out Effekt
+      welcomeScreen.style.opacity = '0';
+  
+      // Hauptinhalt anzeigen nach dem Fade-Out
+      setTimeout(() => {
+        welcomeScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+      }, 1300); // Zeit für den Fade-Out (2.5 Sekunden)
+    }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
+  }
 };
+
+var expirationTime = new Date(Date.now() + 600000); // Fest: 10 Minuten in Millisekunden
+document.cookie = "Start-Cookie=true; expires=" + expirationTime.toUTCString() + "; path=/";
+
 
 const cookie = document.querySelector("#menu-cookie");
 const menu = document.querySelector("#navbar-cta");
