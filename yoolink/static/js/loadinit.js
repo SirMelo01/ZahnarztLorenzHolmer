@@ -30,9 +30,9 @@ if(cookiefontselect === "true"){
 
 //}
 
-if (!document.cookie.includes("Start-Cookie=true")) {
+//if (!document.cookie.includes("Start-Cookie=true")) {
   document.getElementById("welcome-screen-cookie").style.display = "block";
-}  
+//}  
 
 
 
