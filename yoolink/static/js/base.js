@@ -1,3 +1,5 @@
+var expirationTime = new Date(Date.now() + 600000); // Fest: 10 Minuten in Millisekunden
+
 window.onload = function () {
   setTimeout(() => {
     const welcomeScreen = document.getElementById('welcome-screen');
@@ -14,6 +16,8 @@ window.onload = function () {
   }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
 };
 
+
+document.cookie = "Start-Cookie=true; expires=" + expirationTime.toUTCString() + "; path=/";
 
 
 const cookie = document.querySelector("#menu-cookie");
@@ -44,6 +48,8 @@ function acceptCookie() {
     "Cookie-Map=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
@@ -55,6 +61,7 @@ function refuseCookie() {
     "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
