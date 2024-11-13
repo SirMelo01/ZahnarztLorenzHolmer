@@ -1,5 +1,11 @@
 var expirationTime = new Date(Date.now() + 600000); // Fest: 10 Minuten in Millisekunden
 
+if (document.cookie.includes("Cookie-Consent=")) {
+  if (!document.cookie.includes("Start-Cookie=true")) {
+    document.getElementById("welcome-screen-cookie").style.display = "block";
+  }  
+}
+
 window.onload = function () {
   setTimeout(() => {
     const welcomeScreen = document.getElementById('welcome-screen');
