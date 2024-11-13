@@ -25,7 +25,7 @@ $(document).ready(function() {
         }
         $('#emailForm')[0].reset();
       },
-      error: function (xhr, status, error) {
+      error: function (error) {
         // Handle error response here
         console.error('Form submission failed');
         console.log(error)
