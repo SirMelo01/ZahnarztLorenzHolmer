@@ -64,17 +64,17 @@
     <!-- Services List -->
     <div class="mt-4 md:mt-20 max-w-6xl mx-auto px-4 space-y-24">
 
-        {% for i in service_range %}
-    <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8 {% if i|divisibleby:2 %}md:flex-row-reverse{% endif %}">
+        {% for service in services %}
+    <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8 {% if forloop.counter|divisibleby:2 %}md:flex-row-reverse{% endif %}">
         <!-- Bild-Bereich -->
         <div class="flex-1 flex justify-center items-center">
-            {% if context.get("serviceImage_"|add:i|stringformat:"s"+"_prev") and context.get("serviceImage_"|add:i|stringformat:"s"+"_after") %}
+            {% if service.prev_image and service.after_image %}
                 <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_prev").file.url }}" alt="Bild vorher" />
-                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_after").file.url }}" alt="Bild nachher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ service.prev_image.file.url }}" alt="Bild vorher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ service.after_image.file.url }}" alt="Bild nachher" />
                 </img-comparison-slider>
-            {% elif context.get("serviceImage_"|add:i|stringformat:"s"+"_prev") %}
-                <img src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_prev").file.url }}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
+            {% elif service.prev_image %}
+                <img src="{{ service.prev_image.file.url }}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
             {% else %}
                 <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
             {% endif %}
@@ -84,15 +84,16 @@
             <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
                 <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe" class="w-14 h-14 mb-4">
                 <h3 class="text-3xl font-semibold text-[#262C5D]">
-                    {{ context.get("serviceText_"|add:i|stringformat:"s").title|default:"Service Title" }}
+                    {{ service.text.title|default:"Service Title" }}
                 </h3>
             </div>
             <p class="text-gray-600">
-                {{ context.get("serviceText_"|add:i|stringformat:"s").description|default:"Default description text for the service." }}
+                {{ service.text.description|default:"Default description text for the service." }}
             </p>
         </div>
     </div>
 {% endfor %}
+
 
     </div>
 </section>

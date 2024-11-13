@@ -34,17 +34,17 @@ def load_index(request):
         context["serviceText"] = TextContent.objects.get(name='main_service')
 
     # Services
+    services = []
     for i in range(1, 8):
-        service_name = f"main_service_{i}"
-        
-        if TextContent.objects.filter(name=service_name).exists():
-            context[f"serviceText_{i}"] = TextContent.objects.get(name=service_name)
-
-        if fileentry.objects.filter(place=f"{service_name}_prev").exists():
-            context[f"serviceImage_{i}_prev"] = fileentry.objects.get(place=f"{service_name}_prev")
-
-        if fileentry.objects.filter(place=f"{service_name}_after").exists():
-            context[f"serviceImage_{i}_after"] = fileentry.objects.get(place=f"{service_name}_after")
+        service_data = {
+            'text': TextContent.objects.filter(name=f"main_service_{i}").first(),
+            'prev_image': fileentry.objects.filter(place=f"main_service_{i}_prev").first(),
+            'after_image': fileentry.objects.filter(place=f"main_service_{i}_after").first(),
+        }
+        services.append(service_data)
+    
+    context['services'] = services,
+    
 
     # Services END
 
