@@ -29,11 +29,10 @@ $(document).ready(function() {
         error: function (error) {
           // Handle error response here
           console.error('Form submission failed');
-          console.log(error)
           sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
         }
       });
-    }, 1200)
+    }, 500)
     
   });
 

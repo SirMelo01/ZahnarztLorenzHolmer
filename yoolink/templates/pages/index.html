@@ -64,203 +64,36 @@
     <!-- Services List -->
     <div class="mt-4 md:mt-20 max-w-6xl mx-auto px-4 space-y-24">
 
-        <!-- Service Item 1 - Bild links, Text rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <!-- Bild-Bereich -->
-            <div class="flex-1 flex justify-center items-center">
-                {% if serviceImage_1_prev and serviceImage_1_after %}
-                <!-- Vorher-Nachher-Slider -->
+        {% for i in range(1, 8) %}
+    <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8 {% if i|divisibleby:2 %}md:flex-row-reverse{% endif %}">
+        <!-- Bild-Bereich -->
+        <div class="flex-1 flex justify-center items-center">
+            {% if context.get("serviceImage_"|add:i|stringformat:"s"+"_prev") and context.get("serviceImage_"|add:i|stringformat:"s"+"_after") %}
                 <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ serviceImage_1_prev.file.url }}"
-                        alt="Bild vorher" />
-                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ serviceImage_1_after.file.url }}"
-                        alt="Bild nachher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_prev").file.url }}" alt="Bild vorher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_after").file.url }}" alt="Bild nachher" />
                 </img-comparison-slider>
-                {% elif serviceImage_1_prev %}
-                <!-- Nur das Vorher-Bild -->
-                <img src="{{ serviceImage_1_prev.file.url }}" alt="Prophylaxe Bild"
-                    class="w-full rounded-lg shadow-lg shadow-slate-600">
-                {% else %}
-                <!-- Platzhalterbild, falls kein Bild vorhanden -->
-                <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild"
-                    class="w-full rounded-lg shadow-lg shadow-slate-600">
-                {% endif %}
-            </div>
-            <!-- Text-Bereich -->
-            <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">
-                        {% if serviceText_1 and serviceText_1.title %}
-                        {{ serviceText_1.title }}
-                        {% else %}
-                        Prophylaxe & Recall
-                        {% endif %}
-                    </h3>
-                </div>
-                <p class="text-gray-600">
-                    {% if serviceText_1 and serviceText_1.description %}
-                    {{ serviceText_1.description }}
-                    {% else %}
-                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                    für die lebenslange Zahngesundheit.
-                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                    wie eine perfekte Mundhygiene aussieht.
-                    {% endif %}
-                </p>
-            </div>
+            {% elif context.get("serviceImage_"|add:i|stringformat:"s"+"_prev") %}
+                <img src="{{ context.get("serviceImage_"|add:i|stringformat:"s"+"_prev").file.url }}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
+            {% else %}
+                <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
+            {% endif %}
         </div>
-
-        <!-- Service Item 2 - Text links, Bild rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center justify-center md:space-x-8">
-            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col mb-5 md:mb-6 items-center space-x-4 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Composite"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Composite Restaurationen</h3>
-                </div>
-                <p class="text-gray-600">
-                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                    beispielsweise
-                    Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung ist eine
-                    optimale Mundhygiene
-                    und regelmäßige professionelle Zahnreinigungen entscheidend für die lebenslange
-                    Zahngesundheit.
-                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                    wie eine
-                    perfekte Mundhygiene aussieht.
-                </p>
+        <!-- Text-Bereich -->
+        <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
+            <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
+                <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe" class="w-14 h-14 mb-4">
+                <h3 class="text-3xl font-semibold text-[#262C5D]">
+                    {{ context.get("serviceText_"|add:i|stringformat:"s").title|default:"Service Title" }}
+                </h3>
             </div>
-            <div class="flex-1 flex order-1 md:order-2 justify-center items-center">
-                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img class="rounded-lg max-h-[24rem]" slot="first"
-                        src="{% static 'images/Behandlungsfaelle/Flg AM.png' %}" />
-                    <img class="rounded-lg max-h-[24rem]" slot="second"
-                        src="{% static 'images/Behandlungsfaelle/Flg Comp.png' %}" />
-                </img-comparison-slider>
-            </div>
+            <p class="text-gray-600">
+                {{ context.get("serviceText_"|add:i|stringformat:"s").description|default:"Default description text for the service." }}
+            </p>
         </div>
+    </div>
+{% endfor %}
 
-
-        <!-- Service Item 3 - Bild links, Text rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div class="flex-1 flex justify-center items-center">
-                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img slot="first" class="rounded-lg max-h-[24rem]"
-                        src="{% static 'images/Behandlungsfaelle/WF nachher.png' %}" />
-                    <img slot="second" class="rounded-lg max-h-[24rem]"
-                        src="{% static 'images/Behandlungsfaelle/WF vorher.png' %}" />
-                </img-comparison-slider>
-            </div>
-            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Fuellung.png' %}" alt="Icon Endodontie"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Endodontie</h3>
-                </div>
-                <p class="text-gray-600">
-                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                    für die lebenslange Zahngesundheit.
-                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                    wie eine perfekte Mundhygiene aussieht.
-                </p>
-            </div>
-        </div>
-
-        <!-- Service Item 4 - Text links, Bild rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Zahnersatz.png' %}" alt="Icon Zahnersatz"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Zahnersatz</h3>
-                </div>
-                <p class="text-gray-600">
-                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                    für die lebenslange Zahngesundheit.
-                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                    wie eine perfekte Mundhygiene aussieht.
-                </p>
-            </div>
-            <div class="flex-1 order-1 md:order-2">
-                <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img slot="first" class="rounded-lg"
-                        src="{% static 'images/Behandlungsfaelle/Angepasst/Front vorher Kopie.jpg' %}" />
-                    <img slot="second" class="rounded-lg"
-                        src="{% static 'images/Behandlungsfaelle/Angepasst/Front nachher - Kopie.jpg' %}" />
-                </img-comparison-slider>
-            </div>
-        </div>
-
-        <!-- Service Item 5 - Bild links, Text rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div class="flex-1">
-                <img src="{% static 'images/Bilder Shooting/IMG_4996.jpg' %}" alt="Bleaching Bild"
-                    class="w-full rounded-lg shadow-lg shadow-slate-600">
-            </div>
-            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/PZR.png' %}" alt="Icon Bleaching"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Bleaching</h3>
-                </div>
-                <p class="text-gray-600">
-                    Der wichtigste Pfeiler der modernen Zahnmedizin ist die Vorbeugung von Krankheiten wie
-                    beispielsweise Karies oder Parodontitis. Neben einer ausgewogenen und zahngesunden Ernährung
-                    ist eine optimale Mundhygiene und regelmäßige professionelle Zahnreinigungen entscheidend
-                    für die lebenslange Zahngesundheit.
-                    Gerne unterstützen wir Sie bei der Optimierung oder zeigen Ihnen oder Ihren Kindern,
-                    wie eine perfekte Mundhygiene aussieht.
-                </p>
-            </div>
-        </div>
-
-        <!-- Service Item 6 - Text links, Bild rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div class="flex-1 order-2 md:order-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Parodontologie.png' %}" alt="Icon Zahnersatz"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
-                </div>
-                <p class="text-gray-600">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat voluptates odit,
-                    consequuntur labore veniam, minus inventore laudantium cupiditate similique beatae suscipit
-                    perspiciatis aspernatur iure consectetur voluptate? Vero unde odit cupiditate.
-                </p>
-            </div>
-            <div class="flex-1 order-1 md:order-2">
-                <img src="https://placehold.co/600x400" alt="Bleaching Bild"
-                    class="w-full rounded-lg shadow-lg shadow-slate-600">
-            </div>
-        </div>
-
-        <!-- Service Item 7 - Bild links, Text rechts -->
-        <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8">
-            <div class="flex-1">
-                <img src="https://placehold.co/600x400" alt="Bleaching Bild"
-                    class="w-full rounded-lg shadow-lg shadow-slate-600">
-            </div>
-            <div class="flex-1 mt-8 md:mt-0 text-center mb-5 md:mb-0">
-                <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                    <img src="{% static 'images/Icons Behandlungen/Notfall.png' %}" alt="Icon Bleaching"
-                        class="w-14 h-14 mb-4">
-                    <h3 class="text-3xl font-semibold text-[#262C5D]">Lorem ipsum</h3>
-                </div>
-                <p class="text-gray-600">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam harum nobis soluta
-                    reiciendis aut earum aperiam numquam suscipit delectus vitae perferendis, labore in,
-                    incidunt tenetur est laudantium, et nihil saepe!
-                </p>
-            </div>
-        </div>
     </div>
 </section>
 

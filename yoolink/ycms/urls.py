@@ -48,7 +48,7 @@ urlpatterns = [
     path('seiten/hauptseite/Team/', views.site_view_main_team, name='site_hauptseite_team'),
     path('seiten/hauptseite/Kontakt/', views.site_view_main_contact, name='site_hauptseite_contact'),
     path('seiten/hauptseite/FAQ/', views.site_view_main_faq, name='site_hauptseite_faq'),
-    path('seiten/hauptseite/Leistungen/1/', views.site_view_main_services_1, name='site_hauptseite_services_1'),
+    path('seiten/hauptseite/Leistungen/<int:service_id>/', views.site_view_main_service_by_id, name='site_hauptseite_services_detail'),
     
     # Products
     path('products/', views.product_view, name='products'),

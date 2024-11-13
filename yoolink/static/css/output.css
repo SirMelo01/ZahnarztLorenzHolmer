@@ -4384,6 +4384,10 @@ video {
     flex-direction: row;
   }
 
+  .md\:flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
   .md\:justify-normal {
     justify-content: normal;
   }

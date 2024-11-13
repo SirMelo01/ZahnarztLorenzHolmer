@@ -616,18 +616,25 @@ def site_view_main_services(request):
     return render(request, "pages/cms/content/sites/mainsite/ServiceSection.html", data)
 
 @login_required(login_url='login')
-def site_view_main_services_1(request):
+def site_view_main_service_by_id(request, service_id):
     data = {}
-    if TextContent.objects.filter(name="main_service_1").exists():
-        data["textContent"] = TextContent.objects.get(name='main_service_1')
+    service_name = f"main_service_{service_id}"
+    
+    # TextContent laden
+    if TextContent.objects.filter(name=service_name).exists():
+        data["textContent"] = TextContent.objects.get(name=service_name)
 
-    if fileentry.objects.filter(place='main_service_1_prev').exists():
-        data["prevImage"] = fileentry.objects.get(place='main_service_1_prev')
+    # Bilder laden
+    if fileentry.objects.filter(place=f"{service_name}_prev").exists():
+        data["prevImage"] = fileentry.objects.get(place=f"{service_name}_prev")
+    if fileentry.objects.filter(place=f"{service_name}_after").exists():
+        data["afterImage"] = fileentry.objects.get(place=f"{service_name}_after")
 
-    if fileentry.objects.filter(place='main_service_1_after').exists():
-        data["afterImage"] = fileentry.objects.get(place='main_service_1_after')
-        
-    return render(request, "pages/cms/content/sites/mainsite/services/Service1Content.html", data)
+    data["service_id"] = service_id
+    data["service_name"] = service_name
+
+    # Template mit dynamischen Daten rendern
+    return render(request, "pages/cms/content/sites/mainsite/services/ServiceContent.html", data)
 
 @login_required(login_url='login')
 def site_view_main_team(request):
@@ -1674,14 +1681,9 @@ def email_send(request):
 
         return Response({'success': 'Ihre Nachricht wurde erfolgreich versendet.'}, status=status.HTTP_200_OK)
     else:
-        # Erfasse die Fehlerdaten und formatiere sie für die Response
-        form_errors = {field: error.get_json_data() for field, error in form.errors.items()}
-
         # Response mit detaillierten Fehlern und den gesendeten Daten
         return Response({
-            'error': 'Formular-Validierung fehlgeschlagen. Bitte versuchen Sie es erneut.',
-            'form_errors': form_errors,
-            'post_data': request.POST.dict()
+            'error': 'Formular-Validierung fehlgeschlagen. Bitte versuchen Sie es erneut.'
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
