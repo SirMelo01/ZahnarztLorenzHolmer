@@ -78,6 +78,7 @@ def load_index(request):
 
     form = ContactForm()
     context['form'] = form
+    context["service_range"] = range(1, 8)
 
     context.update(get_opening_hours())
 

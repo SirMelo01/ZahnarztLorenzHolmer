@@ -613,6 +613,8 @@ def site_view_main_services(request):
     if TextContent.objects.filter(name="main_service").exists():
         data["textContent"] = TextContent.objects.get(name='main_service')
         
+    data["service_range"] = range(1, 8)
+        
     return render(request, "pages/cms/content/sites/mainsite/ServiceSection.html", data)
 
 @login_required(login_url='login')
@@ -634,7 +636,7 @@ def site_view_main_service_by_id(request, service_id):
     data["service_name"] = service_name
 
     # Template mit dynamischen Daten rendern
-    return render(request, "pages/cms/content/sites/mainsite/services/ServiceContent.html", data)
+    return render(request, "pages/cms/content/sites/mainsite/services/ServiceDetailContent.html", data)
 
 @login_required(login_url='login')
 def site_view_main_team(request):
