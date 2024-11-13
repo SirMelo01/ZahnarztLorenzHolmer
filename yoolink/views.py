@@ -43,7 +43,7 @@ def load_index(request):
         }
         services.append(service_data)
     
-    context['services'] = services,
+    context['services'] = services
     
 
     # Services END
