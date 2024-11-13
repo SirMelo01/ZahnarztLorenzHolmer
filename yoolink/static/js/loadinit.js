@@ -25,6 +25,9 @@ if(cookiefontselect === "true"){
   document.head.appendChild(font2);
   document.head.appendChild(font3);
 }
+if(cookiestart === "true"){
+  document.getElementById("welcome-screen").style.display = "none";
+}
 
 
 

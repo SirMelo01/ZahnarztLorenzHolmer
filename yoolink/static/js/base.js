@@ -1,5 +1,5 @@
 window.onload = function () {
-  if(cookiestart === "false") {
+  if(cookiestart === "false"){
     setTimeout(() => {
       const welcomeScreen = document.getElementById('welcome-screen');
       const mainContent = document.getElementById('main-content');
@@ -48,6 +48,7 @@ function acceptCookie() {
     "Cookie-Map=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
@@ -59,6 +60,7 @@ function refuseCookie() {
     "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
