@@ -1675,7 +1675,7 @@ def email_send(request):
         return Response({'success': 'Ihre Nachricht wurde erfolgreich versendet.'}, status=status.HTTP_200_OK)
     else:
         # Wenn das Formular nicht gültig ist (z. B. durch ein fehlerhaftes reCAPTCHA), wird ein Fehler zurückgegeben
-        return Response({'error': 'Formular-Validierung fehlgeschlagen. Bitte versuchen Sie es erneut.'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Formular-Validierung fehlgeschlagen. Bitte versuchen Sie es erneut.', 'form': form, 'post': request.POST}, status=status.HTTP_400_BAD_REQUEST)
 
 
 # Settings
