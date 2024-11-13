@@ -28,6 +28,7 @@ $(document).ready(function() {
       error: function (xhr, status, error) {
         // Handle error response here
         console.error('Form submission failed');
+        console.log(error)
         sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
       }
     });
