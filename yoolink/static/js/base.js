@@ -1,23 +1,19 @@
 window.onload = function () {
-  if(cookiestart === "false"){
+  setTimeout(() => {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const mainContent = document.getElementById('main-content');
+
+    // Fade-Out Effekt
+    welcomeScreen.style.opacity = '0';
+
+    // Hauptinhalt anzeigen nach dem Fade-Out
     setTimeout(() => {
-      const welcomeScreen = document.getElementById('welcome-screen');
-      const mainContent = document.getElementById('main-content');
-  
-      // Fade-Out Effekt
-      welcomeScreen.style.opacity = '0';
-  
-      // Hauptinhalt anzeigen nach dem Fade-Out
-      setTimeout(() => {
-        welcomeScreen.style.display = 'none';
-        mainContent.style.display = 'block';
-      }, 1300); // Zeit für den Fade-Out (2.5 Sekunden)
-    }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
-  }
+      welcomeScreen.style.display = 'none';
+      mainContent.style.display = 'block';
+    }, 1300); // Zeit für den Fade-Out (2.5 Sekunden)
+  }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
 };
 
-var expirationTime = new Date(Date.now() + 600000); // Fest: 10 Minuten in Millisekunden
-document.cookie = "Start-Cookie=true; expires=" + expirationTime.toUTCString() + "; path=/";
 
 
 const cookie = document.querySelector("#menu-cookie");
@@ -48,7 +44,6 @@ function acceptCookie() {
     "Cookie-Map=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
@@ -60,7 +55,6 @@ function refuseCookie() {
     "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
-  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }

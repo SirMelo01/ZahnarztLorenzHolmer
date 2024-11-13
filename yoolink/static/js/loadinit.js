@@ -15,7 +15,6 @@ font3.rel = "stylesheet";
 var cookieselect = getCookie("Cookie-Consent");
 var cookiefontselect = getCookie("Cookie-Font");
 var cookiemapselect = getCookie("Cookie-Map");
-var cookiestart = getCookie("Start-Cookie");
 
 if(cookiemapselect === "true"){
   //Bei Google passiert hier nichts
@@ -24,9 +23,6 @@ if(cookiefontselect === "true"){
   document.head.appendChild(font1);
   document.head.appendChild(font2);
   document.head.appendChild(font3);
-}
-if(cookiestart === "true"){
-  document.getElementById("welcome-screen").style.display = "none";
 }
 
 
