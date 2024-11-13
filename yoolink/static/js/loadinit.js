@@ -26,13 +26,13 @@ if(cookiefontselect === "true"){
   document.head.appendChild(font3);
 }
 
-if (document.cookie.includes("Cookie-Consent=")) {
-  if (!document.cookie.includes("Start-Cookie=true")) {
-    document.getElementById("welcome-screen-cookie").style.display = "block";
-  }  
-}
+//if (document.cookie.includes("Cookie-Consent=")) {
 
+//}
 
+if (!document.cookie.includes("Start-Cookie=true")) {
+  document.getElementById("welcome-screen-cookie").style.display = "block";
+}  
 
 
 
