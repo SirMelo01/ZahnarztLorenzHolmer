@@ -14,24 +14,27 @@ $(document).ready(function() {
     event.preventDefault(); // Prevent the default form submission
     console.log("Sende email...")
     // Send form data to the server using AJAX
-    $.ajax({
-      type: 'POST',
-      url: '/cms/email/request/',
-      data: $("#emailForm").serialize(),
-      success: function (response) {
-        // Handle successful response here
-        if (response.success) {
-          sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
+    setTimeout(() => {
+      $.ajax({
+        type: 'POST',
+        url: '/cms/email/request/',
+        data: $("#emailForm").serialize(),
+        success: function (response) {
+          // Handle successful response here
+          if (response.success) {
+            sendNotif("Ihre Nachricht wurde erfolgreich gesendet", "success")
+          }
+          $('#emailForm')[0].reset();
+        },
+        error: function (error) {
+          // Handle error response here
+          console.error('Form submission failed');
+          console.log(error)
+          sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
         }
-        $('#emailForm')[0].reset();
-      },
-      error: function (error) {
-        // Handle error response here
-        console.error('Form submission failed');
-        console.log(error)
-        sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
-      }
-    });
+      });
+    }, 1200)
+    
   });
 
 /*setTimeout(() => {
