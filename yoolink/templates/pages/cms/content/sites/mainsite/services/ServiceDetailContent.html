@@ -27,6 +27,13 @@
     <div class="mt-8 flex justify-center w-full">
         <div class="flex items-center max-w-4xl md:px-8">
             <div class="max-w-2xl mb-10 md:mx-auto sm:text-center lg:max-w-4xl md:mb-12">
+                <div class="flex justify-center items-center relative mb-3">
+                    <img src="{% if iconImage %}{{ iconImage.file.url }}{% else %}{% static 'images/designImg/filler.png' %}{% endif %}" alt="Icon" class="w-14 h-14 mb-4 content-image" key="{{ service_name }}_icon">
+                    <span class="absolute top-0 left-0 inline-block px-2 py-1 text-sm font-semibold text-white bg-orange-500 rounded-full not-sortable z-40 hover:cursor-pointer edit-img">
+                        <i class="bi bi-pencil-square"></i>
+                    </span>
+                </div>
+                
                 <input id="title" type="text" value="{{ textContent.title|default:'Service Title' }}"
                     class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-2xl font-bold tracking-tight text-teal-900 uppercase leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                 <textarea rows="7" id="description"

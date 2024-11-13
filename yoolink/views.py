@@ -40,6 +40,7 @@ def load_index(request):
             'text': TextContent.objects.filter(name=f"main_service_{i}").first(),
             'prev_image': fileentry.objects.filter(place=f"main_service_{i}_prev").first(),
             'after_image': fileentry.objects.filter(place=f"main_service_{i}_after").first(),
+            'icon': fileentry.objects.filter(place=f"main_service_{i}_icon").first(),
         }
         services.append(service_data)
     

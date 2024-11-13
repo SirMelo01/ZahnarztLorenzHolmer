@@ -613,7 +613,18 @@ def site_view_main_services(request):
     if TextContent.objects.filter(name="main_service").exists():
         data["textContent"] = TextContent.objects.get(name='main_service')
         
-    data["service_range"] = range(1, 8)
+    services = []
+    for i in range(1, 8):
+        service_data = {
+            'text': TextContent.objects.filter(name=f"main_service_{i}").first(),
+            'prev_image': fileentry.objects.filter(place=f"main_service_{i}_prev").first(),
+            'after_image': fileentry.objects.filter(place=f"main_service_{i}_after").first(),
+            'icon': fileentry.objects.filter(place=f"main_service_{i}_icon").first(),
+            'index': i
+        }
+        services.append(service_data)
+    
+    data['services'] = services
         
     return render(request, "pages/cms/content/sites/mainsite/ServiceSection.html", data)
 
@@ -631,6 +642,8 @@ def site_view_main_service_by_id(request, service_id):
         data["prevImage"] = fileentry.objects.get(place=f"{service_name}_prev")
     if fileentry.objects.filter(place=f"{service_name}_after").exists():
         data["afterImage"] = fileentry.objects.get(place=f"{service_name}_after")
+    if fileentry.objects.filter(place=f"{service_name}_icon").exists():
+        data["iconImage"] = fileentry.objects.get(place=f"{service_name}_icon")
 
     data["service_id"] = service_id
     data["service_name"] = service_name

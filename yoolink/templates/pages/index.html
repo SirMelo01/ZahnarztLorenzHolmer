@@ -70,19 +70,19 @@
         <div class="flex-1 flex justify-center items-center">
             {% if service.prev_image and service.after_image %}
                 <img-comparison-slider class="shadow-lg rounded-xl shadow-slate-600">
-                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ service.prev_image.file.url }}" alt="Bild vorher" />
-                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ service.after_image.file.url }}" alt="Bild nachher" />
+                    <img class="rounded-lg max-h-[24rem]" slot="first" src="{{ service.prev_image.file.url }}" alt="{{ service.prev_image.title }}" />
+                    <img class="rounded-lg max-h-[24rem]" slot="second" src="{{ service.after_image.file.url }}" alt="{{ service.after_image.title }}" />
                 </img-comparison-slider>
             {% elif service.prev_image %}
-                <img src="{{ service.prev_image.file.url }}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
+                <img src="{{ service.prev_image.file.url }}" alt="{{ service.prev_image.title }}" class="w-full rounded-lg shadow-lg shadow-slate-600">
             {% else %}
-                <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Prophylaxe Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
+                <img src="{% static 'images/Bilder Shooting/LH_1.jpg' %}" alt="Leistungen Bild" class="w-full rounded-lg shadow-lg shadow-slate-600">
             {% endif %}
         </div>
         <!-- Text-Bereich -->
         <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
             <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Prophylaxe" class="w-14 h-14 mb-4">
+                <img src="{% if service.icon %}{{ service.icon.file.url }}{% else %}{% static 'images/Icons Behandlungen/Prophylaxe.png' %}{% endif %}" alt="{% if service.icon and service.icon.title %}{{ service.icon.title }}{% else %}Icon{% endif%}" class="w-14 h-14 mb-4">
                 <h3 class="text-3xl font-semibold text-[#262C5D]">
                     {{ service.text.title|default:"Service Title" }}
                 </h3>

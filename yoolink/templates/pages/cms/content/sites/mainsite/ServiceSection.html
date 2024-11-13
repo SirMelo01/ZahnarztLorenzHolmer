@@ -37,21 +37,21 @@
     <div>
         <h4 class="text-2xl">Alle verfügbaren Sektionen:</h4>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-5">
-            {% for i in service_range %}
+            {% for service in services %}
             <div class="bg-blue-100 border-gray-200 rounded-2xl shadow-xl p-6 text-black flex flex-col">
                 <div class="flex-1 mb-5 md:mb-0 mt-8 md:mt-0 text-center">
                     <div class="flex flex-col items-center space-x-4 mb-6 justify-center">
-                        <img src="{% static 'images/Icons Behandlungen/Prophylaxe.png' %}" alt="Icon Leistung {{ i }}"
+                        <img src="{% if service.icon %}{{ service.icon.file.url }}{% else %}{% static 'images/Icons Behandlungen/Prophylaxe.png' %}{% endif %}" alt="{% if service.icon and service.icon.title %}{{ service.icon.title }}{% else %}Icon{% endif%}" alt="Icon Leistung {{ service.index }}"
                             class="w-14 h-14 mb-4">
-                        <h3 class="text-3xl font-semibold text-[#262C5D]">Leistungen {{ i }}</h3>
+                        <h3 class="text-3xl font-semibold text-[#262C5D]">{% if service.text %}{{service.text.title}}{% else %}Leistungen {{ service.index }}{% endif %}</h3>
                     </div>
                     <p class="text-gray-600">
-                        Hier kannst du den Inhalt von Leistungen {{ i }} anpassen.
+                        Hier kannst du den Inhalt von Leistungen{{ service.index }} anpassen.
                     </p>
                 </div>
                 <div class="flex-grow"></div>
                 <div class="flex justify-center mt-12">
-                    <a href="{% url 'cms:site_hauptseite_services_detail' i %}"
+                    <a href="{% url 'cms:site_hauptseite_services_detail' service.index %}"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Verwalten</a>
                 </div>
             </div>
