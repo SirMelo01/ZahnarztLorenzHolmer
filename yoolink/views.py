@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from yoolink.ycms.models import FAQ, Message, TeamMember, TextContent, fileentry, Galerie, OpeningHours, UserSettings, Product
-import datetime
-from django.http import HttpResponseRedirect
 
 
 def get_opening_hours():
@@ -17,6 +15,11 @@ def get_opening_hours():
     if user_settings.exists():
         user_settings = user_settings.first()
         opening_hours["owner_data"] = user_settings
+        
+    # Muss überall sein
+    if TextContent.objects.filter(name="footer").exists():
+        opening_hours["footerText"] = TextContent.objects.get(name='footer')
+        
     return opening_hours
 
 def load_index(request):
@@ -57,10 +60,6 @@ def load_index(request):
 
     if TextContent.objects.filter(name="main_faq").exists():
         context["faqText"] = TextContent.objects.get(name='main_faq')
-
-    # Muss überall sein
-    if TextContent.objects.filter(name="footer").exists():
-        context["footerText"] = TextContent.objects.get(name='footer')
 
     # Galery
     if Galerie.objects.filter(place='main_praxis').exists():
