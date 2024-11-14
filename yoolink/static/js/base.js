@@ -1,3 +1,11 @@
+var expirationTime = new Date(Date.now() + 600000); // Fest: 10 Minuten in Millisekunden
+
+if (document.cookie.includes("Cookie-Consent=")) {
+  if (!document.cookie.includes("Start-Cookie=true")) {
+    document.getElementById("welcome-screen-cookie").style.display = "block";
+  }  
+}
+
 window.onload = function () {
   setTimeout(() => {
     const welcomeScreen = document.getElementById('welcome-screen');
@@ -13,6 +21,10 @@ window.onload = function () {
     }, 1300); // Zeit für den Fade-Out (2.5 Sekunden)
   }, 1200); // Wartezeit, bevor der Fade-Out beginnt (0.5 Sekunden)
 };
+
+
+document.cookie = "Start-Cookie=true; expires=" + expirationTime.toUTCString() + "; path=/";
+
 
 const cookie = document.querySelector("#menu-cookie");
 const menu = document.querySelector("#navbar-cta");
@@ -42,6 +54,8 @@ function acceptCookie() {
     "Cookie-Map=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=true; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
@@ -53,6 +67,7 @@ function refuseCookie() {
     "Cookie-Map=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
   document.cookie =
     "Cookie-Font=false; expires=" + new Date(9999, 0, 1).toUTCString() + "; path=/";
+  document.cookie = "Start-Cookie=false; expires=" + expirationTime.toUTCString() + "; path=/";
   location.reload();
   cookieRefresh();
 }
