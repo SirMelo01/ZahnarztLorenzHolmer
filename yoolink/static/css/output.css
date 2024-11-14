@@ -939,7 +939,8 @@ video {
 }
 
 .me-2 {
-  margin-inline-end: 0.5rem;
+  -webkit-margin-end: 0.5rem;
+          margin-inline-end: 0.5rem;
 }
 
 .ml-10 {
@@ -999,11 +1000,13 @@ video {
 }
 
 .ms-2 {
-  margin-inline-start: 0.5rem;
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
 }
 
 .ms-3 {
-  margin-inline-start: 0.75rem;
+  -webkit-margin-start: 0.75rem;
+          margin-inline-start: 0.75rem;
 }
 
 .mt-0 {
@@ -1664,39 +1667,9 @@ video {
   scroll-margin-bottom: 4rem;
 }
 
-.-scroll-my-14 {
-  scroll-margin-top: -3.5rem;
-  scroll-margin-bottom: -3.5rem;
-}
-
 .scroll-my-14 {
   scroll-margin-top: 3.5rem;
   scroll-margin-bottom: 3.5rem;
-}
-
-.scroll-my-5 {
-  scroll-margin-top: 1.25rem;
-  scroll-margin-bottom: 1.25rem;
-}
-
-.scroll-my-2 {
-  scroll-margin-top: 0.5rem;
-  scroll-margin-bottom: 0.5rem;
-}
-
-.scroll-my-10 {
-  scroll-margin-top: 2.5rem;
-  scroll-margin-bottom: 2.5rem;
-}
-
-.scroll-my-12 {
-  scroll-margin-top: 3rem;
-  scroll-margin-bottom: 3rem;
-}
-
-.scroll-my-20 {
-  scroll-margin-top: 5rem;
-  scroll-margin-bottom: 5rem;
 }
 
 .scroll-my-8 {
@@ -4402,29 +4375,14 @@ video {
     flex: 1 1 0%;
   }
 
-  .md\:scroll-my-2 {
-    scroll-margin-top: 0.5rem;
-    scroll-margin-bottom: 0.5rem;
-  }
-
-  .md\:scroll-my-24 {
-    scroll-margin-top: 6rem;
-    scroll-margin-bottom: 6rem;
-  }
-
-  .md\:-scroll-my-24 {
-    scroll-margin-top: -6rem;
-    scroll-margin-bottom: -6rem;
-  }
-
-  .md\:-scroll-my-28 {
-    scroll-margin-top: -7rem;
-    scroll-margin-bottom: -7rem;
-  }
-
   .md\:-scroll-my-32 {
     scroll-margin-top: -8rem;
     scroll-margin-bottom: -8rem;
+  }
+
+  .md\:scroll-my-2 {
+    scroll-margin-top: 0.5rem;
+    scroll-margin-bottom: 0.5rem;
   }
 
   .md\:grid-cols-2 {

@@ -20,7 +20,7 @@
   </div>
 
   <!-- Footer Content -->
-  <div class="max-w-6xl mx-auto px-4">
+  <div class="max-w-6xl mx-auto px-4 mt-8">
     <!-- Flex Container für Footer-Inhalte -->
     <div
       class="flex flex-col md:flex-row md:justify-between space-y-8 md:space-y-0"
@@ -95,52 +95,11 @@
           himenaeos. Nullam ornare nunc a mauris euismod, in sollicitudin turpis
           placerat.{% endif %}
         </textarea>
-        <input inputType="buttonText"
+        <input id="buttonText"
             value="{% if textContent and textContent.buttonText %}{{textContent.buttonText}}{% else %}Termin vereinbaren{% endif %}"
-            class="rounded-md bg-blue-300 text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"></input>
+            class="rounded-md bg-blue-300 text-white px-3.5 py-2.5 text-sm font-semibold mt-5 shadow-sm"></input>
       </div>
-
-      <!-- Links -->
-      <div class="md:flex-1 flex justify-center md:justify-normal space-x-16">
-        <div>
-          <p class="text-lg font-semibold text-[#262C5D]">Quick Links</p>
-          <ul class="mt-4 space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800"
-                >Impressum</a
-              >
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800"
-                >Datenschutz</a
-              >
-            </li>
-            <!--<li><a href="#" class="text-gray-600 hover:text-blue-800">AGBs</a></li>-->
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800"
-                >Startseite</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-lg font-semibold text-[#262C5D]">Help Center</p>
-          <ul class="mt-4 space-y-2">
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800"
-                >Leistungen</a
-              >
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800">Galerie</a>
-            </li>
-            <li>
-              <a href="#" class="text-gray-600 hover:text-blue-800">Kontakt</a>
-            </li>
-            <!--<li><a href="#" class="text-gray-600 hover:text-blue-800">News</a></li>-->
-          </ul>
-        </div>
-      </div>
+      
     </div>
   </div>
 
