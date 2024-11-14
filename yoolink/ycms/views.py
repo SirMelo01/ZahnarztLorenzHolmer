@@ -596,6 +596,13 @@ def content_view(request):
 def site_view_main(request):
     return render(request, "pages/cms/content/sites/MainSite.html", {})
 
+@login_required(login_url='login')
+def site_view_footer(request):
+    data = {}
+    if TextContent.objects.filter(name="footer").exists():
+        data["textContent"] = TextContent.objects.get(name='footer')
+    return render(request, "pages/cms/content/sites/FooterSite.html", data)
+
 # Main Site - Hero Section
 @login_required(login_url='login')
 def site_view_main_hero(request):
