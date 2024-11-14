@@ -3,6 +3,22 @@
 <link href="{% static 'css/wellen.css' %}" rel="stylesheet" />
 <link href="{% static 'css/fische.css' %}" rel="stylesheet" />
 <link href="{% static 'css/uboot.css' %}" rel="stylesheet" />
+<style>
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      .grid > *:nth-child(5),
+      .grid > *:nth-child(6) {
+        grid-column: span 2;
+        justify-self: center;
+      }
+    }
+    @media (min-width: 1024px) {
+      .grid > *:nth-child(7) {
+        grid-column: span 4;
+        justify-self: center;
+      }
+    }
+  </style>
 {% endcompress css %} {% endblock css %}
 
 <!--Kontaktbuttons Beginn-->

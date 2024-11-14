@@ -29,12 +29,26 @@
     <link rel="stylesheet" href="{% static 'css/cms/cms.css' %}">
     <link href="{% static 'css/utils.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {% endcompress css %}
 
     <script src="{% static 'js/libs/jquery-3.7.0.min.js' %}"></script>
         
         {% compress js inline %}
     <script defer src="{% static 'js/loadinit.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          if (cookiefontselect === "true") {
+              
+              const link = document.createElement("link");
+              link.rel = "stylesheet";
+              link.href = "{% static 'css/fonts.css' %}";
+              document.head.appendChild(link);
+              
+          }
+      });
+    </script>
     <script src="{% static 'js/cms.js' %}"></script>
     <!-- jQuery Bibliothek (https://jquery.com/)
            Copyright jQuery Foundation and other contributors
