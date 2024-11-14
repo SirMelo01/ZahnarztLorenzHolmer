@@ -95,11 +95,9 @@
           himenaeos. Nullam ornare nunc a mauris euismod, in sollicitudin turpis
           placerat.{% endif %}
         </textarea>
-        <a
-          href="{% if owner_data and owner_data.appointmentURL %}{{owner_data.appointmentURL}}{% else %}#{% endif %}"
-          class="bg-[#262C5D] text-white px-8 py-3 rounded-full hover:bg-blue-800 shadow-lg"
-          >{% if textContent and textContent.buttonText %}{{textContent.buttonText}}{% else %}Termin vereinbaren{% endif %}</a
-        >
+        <input inputType="buttonText"
+            value="{% if textContent and textContent.buttonText %}{{textContent.buttonText}}{% else %}Termin vereinbaren{% endif %}"
+            class="rounded-md bg-blue-300 text-white px-3.5 py-2.5 text-sm font-semibold shadow-sm"></input>
       </div>
 
       <!-- Links -->
