@@ -273,10 +273,9 @@
             <div>
               <p class="text-lg font-semibold text-[#262C5D]">Quick Links</p>
               <ul class="mt-4 space-y-2">
-                <li><a href="#" class="text-gray-600 hover:text-blue-800">Impressum</a></li>
-                <li><a href="#" class="text-gray-600 hover:text-blue-800">Datenschutz</a></li>
-                <!--<li><a href="#" class="text-gray-600 hover:text-blue-800">AGBs</a></li>-->
-                <li><a href="#" class="text-gray-600 hover:text-blue-800">Startseite</a></li>
+                <li><a href="{% url 'impressum' %}" class="text-gray-600 hover:text-blue-800">Impressum</a></li>
+                <li><a href="{% url 'datenschutz' %}" class="text-gray-600 hover:text-blue-800">Datenschutz</a></li>
+                <li><a href="{% url 'home' %}" class="text-gray-600 hover:text-blue-800">Startseite</a></li>
               </ul>
             </div>
             <div>
@@ -285,7 +284,6 @@
                 <li><a href="{% url 'home' %}#Leistungen" class="text-gray-600 hover:text-blue-800">Leistungen</a></li>
                 <li><a href="{% url 'home' %}#Galerie" class="text-gray-600 hover:text-blue-800">Galerie</a></li>
                 <li><a href="{% url 'home' %}#Kontakt" class="text-gray-600 hover:text-blue-800">Kontakt</a></li>
-                <!--<li><a href="#" class="text-gray-600 hover:text-blue-800">News</a></li>-->
               </ul>
             </div>
           </div>
@@ -294,7 +292,7 @@
 
       <!-- Copyright Line -->
       <div class="mt-12 text-center text-gray-500 text-sm">
-        &copy; Lorenz Holmer 2024. Designed and hosted by YooLink.
+        © Lorenz Holmer {% load tz %} {% now "Y" %}. Designed and hosted by <a class="link" href="https://yoolink.de/">YooLink</a>.
       </div>
     </footer>
     {% endblock footer %}
