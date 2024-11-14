@@ -137,6 +137,12 @@ $(document).ready(function () {
     closeMenu();
   });
 
+
+  // Schließen des mobilen Menüs beim Klicken auf einen Link
+  $('#mobile-menu a').on('click', function () {
+    closeMenu(); // Schließt das mobile Menü
+  });
+
   // Banner anzeigen, wenn der Bildschirm auf Desktop-Größe erweitert wird
   $(window).on('resize', function () {
     if ($(window).width() >= 768) { // 768px ist die Grenze für 'md'
