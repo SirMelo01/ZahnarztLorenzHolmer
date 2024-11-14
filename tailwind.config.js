@@ -54,6 +54,11 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        openSans: ['Open Sans', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
       },
     },
   },

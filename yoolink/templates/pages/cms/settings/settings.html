@@ -60,10 +60,13 @@
         <div class="my-2">
           <label class="mb-1 block w-80 self-center pr-4 font-bold text-gray-500 md:mb-1" for="global_font">Globale Schriftart</label>
           <select class="w-full appearance-none rounded-xl border-2 border-gray-200 bg-gray-200 px-4 py-2 leading-tight text-gray-700 focus:border-blue-500 focus:bg-white focus:outline-none" id="global_font" name="global_font">
-              <option value="" {% if settings.global_font == "" %}selected{% endif %}>Keine</option>
-              <option value="font-sans" {% if settings.global_font == "font-sans" %}selected{% endif %}>Sans</option>
-              <option value="font-serif" {% if settings.global_font == "font-serif" %}selected{% endif %}>Serif</option>
-              <option value="font-mono" {% if settings.global_font == "font-mono" %}selected{% endif %}>Monospace</option>
+            <option value="" {% if settings.global_font == "" %}selected{% endif %}>Keine</option>
+            <option value="font-sans" {% if settings.global_font == "font-sans" %}selected{% endif %} class="font-sans">Sans</option>
+            <option value="font-inter" {% if settings.global_font == "font-inter" %}selected{% endif %} class="font-inter">Inter</option>
+            <option value="font-lato" {% if settings.global_font == "font-lato" %}selected{% endif %} class="font-lato">Lato</option>
+            <option value="font-montserrat" {% if settings.global_font == "font-montserrat" %}selected{% endif %} class="font-montserrat">Montserrat</option>
+            <option value="font-openSans" {% if settings.global_font == "font-openSans" %}selected{% endif %} class="font-openSans">Open Sans</option>
+            <option value="font-roboto" {% if settings.global_font == "font-roboto" %}selected{% endif %} class="font-roboto">Roboto</option>
           </select>
         </div>      
       </form>

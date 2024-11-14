@@ -25,6 +25,28 @@
 
   {% compress js inline %}
   <script defer src="{% static 'js/loadinit.js' %}"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        if (cookiefontselect === "true") {
+            const fonts = [
+                { name: "Poppins", path: "{% static 'fonts/Poppins-Regular.ttf' %}" },
+                { name: "Roboto", path: "{% static 'fonts/Roboto-Regular.ttf' %}" },
+                { name: "OpenSans", path: "{% static 'fonts/OpenSans-Regular.ttf' %}" },
+                { name: "Montserrat", path: "{% static 'fonts/Montserrat-Regular.ttf' %}" },
+                { name: "Lato", path: "{% static 'fonts/Lato-Regular.ttf' %}" },
+                { name: "Inter", path: "{% static 'fonts/Inter_28pt-Regular.ttf' %}" },
+                // Add other font variations as needed
+            ];
+
+            fonts.forEach(font => {
+                const link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.href = font.path;
+                document.head.appendChild(link);
+            });
+        }
+    });
+  </script>
   <!-- jQuery Bibliothek (https://jquery.com/)
            Copyright jQuery Foundation and other contributors
            Released under the MIT license
@@ -44,7 +66,7 @@
 
 </head>
 
-<body class="bg-white font-sans">
+<body class="bg-white {{owner_data.global_font}}">
 
   <div id="welcome-screen-cookie" class="hidden">
     <div id="welcome-screen" class="z-50">
