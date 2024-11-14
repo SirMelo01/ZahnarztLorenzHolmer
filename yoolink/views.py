@@ -136,5 +136,11 @@ def impressum(request):
 
 def datenschutz(request):
     context = {}
-    context.update(get_opening_hours())
+
+    user_settings = UserSettings.objects.filter(user__is_staff=False)
+    if user_settings.exists():
+        owner_data = user_settings.first()
+        context = {
+            'owner_data': owner_data,
+        }
     return render(request, 'pages/datenschutz.html', context)
