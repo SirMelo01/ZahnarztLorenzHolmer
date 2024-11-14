@@ -97,10 +97,10 @@
 
         <!-- Menüpunkte -->
         <div class="hidden md:flex items-center space-x-6 text-lg text-gray-700">
-          <a href="#" class="hover:text-blue-600">Leistungen</a>
-          <a href="#" class="hover:text-blue-600">Galerie</a>
-          <a href="#" class="hover:text-blue-600">Team</a>
-          <a href="#" class="hover:text-blue-600">Kontakt</a>
+          <a href="{% url 'home' %}#Leistungen"  class="hover:text-blue-600">Leistungen</a>
+          <a href="{% url 'home' %}#Galerie" class="hover:text-blue-600">Galerie</a>
+          <a href="{% url 'home' %}#Team" class="hover:text-blue-600">Team</a>
+          <a href="{% url 'home' %}#Kontakt" class="hover:text-blue-600">Kontakt</a>
           <!-- Telefon Icon mit größerem Abstand -->
           <a href="tel:{% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+12368978974{% endif %}" class="hover:text-blue-600 pl-20"> <!-- ml-8 für Abstand -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -138,10 +138,10 @@
         </button>
 
         <!-- Menu Links -->
-        <a href="#" class="text-lg py-2 hover:text-blue-600">Leistungen</a>
-        <a href="#" class="text-lg py-2 hover:text-blue-600">Galerie</a>
-        <a href="#" class="text-lg py-2 hover:text-blue-600">Team</a>
-        <a href="#" class="text-lg py-2 hover:text-blue-600">Kontakt</a>
+        <a href="{% url 'home' %}#Leistungen" class="text-lg py-2 hover:text-blue-600">Leistungen</a>
+        <a href="{% url 'home' %}#Galerie" class="text-lg py-2 hover:text-blue-600">Galerie</a>
+        <a href="{% url 'home' %}#Team" class="text-lg py-2 hover:text-blue-600">Team</a>
+        <a href="{% url 'home' %}#Kontakt" class="text-lg py-2 hover:text-blue-600">Kontakt</a>
 
         <!-- Telefon Icon im Burger-Menü -->
         <a href="tel:{% if owner_data and owner_data.tel_number %}{{owner_data.tel_number}}{% else %}+12368978974{% endif %}" class="text-lg py-2 hover:text-blue-600 flex items-center">
