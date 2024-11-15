@@ -34,7 +34,7 @@
             class="w-64 h-auto max-w-full max-h-40"
           />
         </div>
-        <input class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-2xl font-bold tracking-tight text-teal-900 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+        <input class="bg-gray-200 mt-3 appearance-none text-center border-2 border-gray-200 rounded-lg w-full inline-block py-2 px-4 mb-6 text-lg tracking-tight text-teal-900 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
         id="title" type="text"
         value="{% if textContent %}{{textContent.title}}{% else %}Vivamus posuere tellus venenatis felis euismod, quis fringilla sapien.{% endif %}">
         </input>
@@ -89,11 +89,7 @@
       <div
         class="flex flex-col justify-center items-center md:justify-center flex-1 md:mr-6"
       >
-        <textarea rows="7" class="bg-gray-200 rounded-lg appearance-none border-2 border-gray-200 w-full py-2 px-4 text-base text-gray-800 md:text-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="description" type="text">
-          {% if textContent %}{{textContent.description}}{% else %}Class aptent
-          taciti sociosqu ad litora torquent per conubia nostra, per inceptos
-          himenaeos. Nullam ornare nunc a mauris euismod, in sollicitudin turpis
-          placerat.{% endif %}
+        <textarea rows="7" class="bg-gray-200 rounded-lg appearance-none border-2 border-gray-200 w-full py-2 px-4 text-base text-gray-800 md:text-lg leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="description" type="text">{% if textContent %}{{textContent.description}}{% else %}Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam ornare nunc a mauris euismod, in sollicitudin turpis placerat.{% endif %}
         </textarea>
         <input id="buttonText"
             value="{% if textContent and textContent.buttonText %}{{textContent.buttonText}}{% else %}Termin vereinbaren{% endif %}"
