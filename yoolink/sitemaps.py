@@ -10,8 +10,8 @@ class StaticViewSitemap(Sitemap):
     def items(self):
         return [
             'home',
-            'impressum', 'datenschutz', 'cookies', 
-            'blog:blog'
+            'impressum', 'datenschutz', 'cookies',
+            #'blog:blog'
             ]
     
     def lastmod(self, item):
