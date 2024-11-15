@@ -10,7 +10,7 @@ class StaticViewSitemap(Sitemap):
     def items(self):
         return [
             'home',
-            'impressum', 'datenschutz', 'cookies',
+            'impressum', 'datenschutz', 'cookies'
             #'blog:blog'
             ]
     
@@ -20,11 +20,11 @@ class StaticViewSitemap(Sitemap):
     def location(self, item):
         return reverse(item)
     
-class BlogSitemap(Sitemap):
-     changefreq = "weekly"
-     def items(self):
-          return Blog.objects.filter(active=True)
+#class BlogSitemap(Sitemap):
+#     changefreq = "weekly"
+#     def items(self):
+#          return Blog.objects.filter(active=True)
      
-     def lastmod(self, obj):
-          return obj.last_updated
+#     def lastmod(self, obj):
+#          return obj.last_updated
      
