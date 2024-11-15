@@ -12,6 +12,7 @@ $(document).ready(function() {
    */
   $('#emailForm').submit(function (event) {
     event.preventDefault(); // Prevent the default form submission
+    $('#bSendMail').prop('disabled', true);
     console.log("Sende email...")
     // Send form data to the server using AJAX
     setTimeout(() => {
@@ -30,6 +31,10 @@ $(document).ready(function() {
           // Handle error response here
           console.error('Form submission failed');
           sendNotif("Etwas ist schief gelaufen. Versuchen Sie es bitte später nochmal.", "error")
+        },
+        complete: function() {
+            // Wird ausgeführt, egal ob Erfolg oder Fehler
+            $('#bSendMail').prop('disabled', false); // Button wieder aktivieren
         }
       });
     }, 500)
