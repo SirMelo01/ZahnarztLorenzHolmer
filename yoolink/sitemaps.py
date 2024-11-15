@@ -11,7 +11,6 @@ class StaticViewSitemap(Sitemap):
         return [
             'home',
             'impressum', 'datenschutz', 'cookies', 
-            'designtemplates:designtemplates', 'designtemplates:portfolio', 'designtemplates:handwerksbtrieb',
             'blog:blog'
             ]
     
@@ -29,10 +28,3 @@ class BlogSitemap(Sitemap):
      def lastmod(self, obj):
           return obj.last_updated
      
-class ProductSitemap(Sitemap):
-     changefreq = "weekly"
-     def items(self):
-          return Product.objects.filter(is_active=True)
-     
-     def lastmod(self, obj):
-          return obj.updated_at

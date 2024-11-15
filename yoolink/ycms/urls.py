@@ -50,46 +50,6 @@ urlpatterns = [
     path('seiten/hauptseite/Kontakt/', views.site_view_main_contact, name='site_hauptseite_contact'),
     path('seiten/hauptseite/FAQ/', views.site_view_main_faq, name='site_hauptseite_faq'),
     path('seiten/hauptseite/Leistungen/<int:service_id>/', views.site_view_main_service_by_id, name='site_hauptseite_services_detail'),
-    
-    # Products
-    path('products/', views.product_view, name='products'),
-    path('products/search/', views.product_search, name='product_search'),
-    # USER API Based search
-    path('products/client/search/', views.search_products, name='product_client_search'),
-    path('products/create/', views.product_create_view, name='product-create'),
-    path('products/create/upload', views.product_create, name='product-create-upload'),
-    path('products/<int:product_id>/<slug:slug>/', views.product_detail, name='product-detail'),
-    path('products/<int:product_id>/<slug:slug>/update', views.product_update, name='product-detail-update'),
-    path('products/<int:product_id>/<slug:slug>/delete', views.product_delete, name='product-detail-delete'),
-    path('products/get_categories/', views.get_categories, name='get-categories'),
-    path('products/get_brands/', views.get_brands, name='get-brands'),
-    
-    # ** START - Orders **
-
-    path('api/cart/add/<int:product_id>/', views.add_to_cart, name='api-cart-add'),
-    path('api/cart/', views.cart_items, name='api-cart'),
-    path('api/cart/<int:order_item_id>/remove/', views.remove_from_cart, name='api-cart-remove'),
-    path('api/cart/<int:order_item_id>/update-quantity/', views.update_quantity, name='api-cart-update-quantity'),
-    path('api/cart/update/', views.update_cart_items, name='api-cart-update'),
-    path('api/cart/verify/', views.verify_cart, name='api-cart-verify'),
-    
-    # Other Order Stuff
-    path('api/order/verify/', views.verify_order, name='api-order-verify'),
-
-    path('orders/', views.order_view, name='order-overview'),
-    path('orders/<int:order_id>/', views.order_detail_view, name='order-detail-view'),
-    # GET all orders by filter (as JSON)
-    path('orders/filter/', views.get_orders, name='order-api'),
-    # TODO: Still JSON Response. Change it to render view response
-    path('api/orders/<int:order_id>/', views.get_order_by_id, name='get_order_by_id'),
-    path('orders/<int:order_id>/update_order_status/', views.update_order_status_admin, name='update_order_status'),
-    path('orders/<int:order_id>/delete/', views.delete_order, name='delete_order'),
-
-    path('shop/', views.shop, name='shop'),
-    # ** END - Orders **
-
-    # Reviews
-    path('reviews/<int:review_id>/delete_reviews/', views.delete_review, name='delete_review'),
 
     # Email
     path('email/request/', views.email_send, name='send-email'),
