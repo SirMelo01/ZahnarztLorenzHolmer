@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`lorenzholmer.yoolink.de`) || Host(`www.lorenzholmer.yoolink.de`)"
+      rule: "Host(`zahnarzt-dr-holmer.de`) || Host(`www.zahnarzt-dr-holmer.de`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`lorenzholmer.yoolink.de`)"
+      rule: "Host(`zahnarzt-dr-holmer.de`)"
       entryPoints:
         - flower
       service: flower
@@ -51,7 +51,7 @@ http:
         certResolver: letsencrypt
 
     web-media-router:
-      rule: "Host(`lorenzholmer.yoolink.de`) && PathPrefix(`/media/`)"
+      rule: "Host(`zahnarzt-dr-holmer.de`) && PathPrefix(`/media/`)"
       entryPoints:
         - web-secure
       middlewares:
