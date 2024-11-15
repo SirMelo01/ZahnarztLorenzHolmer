@@ -66,7 +66,7 @@ function mapLoad() {
     // Load the iframe into the #map div
     $('#map').removeClass('hidden').html(`
       <iframe class="w-full h-full rounded-lg shadow-lg"
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBAM2o7PiQqwk15LC1XRH2e_KJ-jUa7KYk&zoom=14&maptype=roadmap&q=Dr. med. dent. Lorenz Holmer"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBD4gnp_pOBRGPfc6wjfwcd4-RhDEBZBek&zoom=14&maptype=roadmap&q=Dr. med. dent. Lorenz Holmer"
               allowfullscreen></iframe>
     `);
   }
