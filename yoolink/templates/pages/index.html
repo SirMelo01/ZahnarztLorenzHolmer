@@ -39,13 +39,13 @@
                     stroke="#262C5D" stroke-width="2" fill="none" />
             </svg>
             <h1
-                class="max-w-[310px] md:max-w-none text-[#262C5D] font-semibold text-3xl text-center md:text-4xl xl:text-5xl md:text-left">
+                class="max-w-[300px] ml-10 md:ml-0 md:max-w-none text-[#262C5D] font-semibold text-3xl text-left md:text-4xl xl:text-5xl md:text-left">
                 {% if heroText %}{{heroText.header}}{% else %}Dr. med. dent. Lorenz Holmer{% endif %}
             </h1>
             <div>
-                <h2 class="text-xl">{% if heroText %}{{heroText.title}}{% else %}Ihr Zahnarzt in Plattling{% endif %}
+                <h2 class="text-xl ml-10 md:ml-0 ">{% if heroText %}{{heroText.title}}{% else %}Ihr Zahnarzt in Plattling{% endif %}
                 </h2>
-                <p class="text-xl font-semibold text-blue-950">{% if heroText %}{{heroText.description}}{% else %}Für
+                <p class="text-xl ml-10 md:ml-0 font-semibold text-blue-950">{% if heroText %}{{heroText.description}}{% else %}Für
                     Ihre Zähne{% endif %}</p>
                 <button
                     class="mt-10 hidden md:inline-block text-sm bg-[#262C5D] text-white px-8 py-3 rounded-full shadow-md shadow-[#262C5D] transition-transform duration-300 ease-in-out hover:scale-105"
