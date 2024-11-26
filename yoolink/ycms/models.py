@@ -417,10 +417,10 @@ class OpeningHours(models.Model):
         if self.is_open:
             if self.has_lunch_break and self.lunch_break_start and self.lunch_break_end:
                 return [
-                    (self.start_time.strftime("%H:%M"), self.lunch_break_start.strftime("%H:%M")),
-                    (self.lunch_break_end.strftime("%H:%M"), self.end_time.strftime("%H:%M")),
+                    (self.start_time, self.lunch_break_start),
+                    (self.lunch_break_end, self.end_time),
                 ]
-            return [(self.start_time.strftime("%H:%M"), self.end_time.strftime("%H:%M"))]
+            return [(self.start_time, self.end_time)]
         return []
 
     def get_day(self):

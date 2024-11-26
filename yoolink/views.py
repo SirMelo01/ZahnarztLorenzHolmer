@@ -4,30 +4,12 @@ from yoolink.ycms.models import FAQ, Message, TeamMember, TextContent, fileentry
 
 def get_opening_hours():
     opening_hours = {}
-    days_mapping = {
-        "opening_mon": "Montag",
-        "opening_tue": "Dienstag",
-        "opening_wed": "Mittwoch",
-        "opening_thu": "Donnerstag",
-        "opening_fri": "Freitag",
-        "opening_sat": "Samstag",
-        "opening_sun": "Sonntag",
-    }
     days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
     for day in days:
-        opening = OpeningHours.objects.filter(day=day).first()
-        if opening:
-            opening_hours[f"opening_{day.lower()}"] = {
-                "is_open": opening.is_open,
-                "periods": opening.calculate_opening_periods(),
-                "day_display": days_mapping[f"opening_{day.lower()}"]
-            }
+        if OpeningHours.objects.filter(day=day).exists():
+            opening_hours[f"opening_{day.lower()}"] = OpeningHours.objects.get(day=day)
         else:
-            opening_hours[f"opening_{day.lower()}"] = {
-                "is_open": False,
-                "periods": [],
-                "day_display": days_mapping[f"opening_{day.lower()}"]
-            }
+            opening_hours[f"opening_{day.lower()}"] = None
             
     user_settings = UserSettings.objects.filter(user__is_staff=False)
     if user_settings.exists():
