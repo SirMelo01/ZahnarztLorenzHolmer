@@ -11,21 +11,12 @@ def get_opening_hours():
         else:
             opening_hours[f"opening_{day.lower()}"] = None
             
-    opening_hours["days"] = [
-        {"name": "Montag", "key": "mon"},
-        {"name": "Dienstag", "key": "tue"},
-        {"name": "Mittwoch", "key": "wed"},
-        {"name": "Donnerstag", "key": "thu"},
-        {"name": "Freitag", "key": "fri"},
-        {"name": "Samstag", "key": "sat"},
-        {"name": "Sonntag", "key": "sun"},
-    ]
-    
-    # Optionaler Benutzer- und Footer-Inhalt
     user_settings = UserSettings.objects.filter(user__is_staff=False)
     if user_settings.exists():
-        opening_hours["owner_data"] = user_settings.first()
+        user_settings = user_settings.first()
+        opening_hours["owner_data"] = user_settings
         
+    # Muss überall sein
     if TextContent.objects.filter(name="footer").exists():
         opening_hours["footerText"] = TextContent.objects.get(name='footer')
         

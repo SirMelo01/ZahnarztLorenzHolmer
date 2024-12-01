@@ -1,5 +1,4 @@
 {% extends "base.html" %} {% load compress static %} {% block title%}{{block.super}} - Webdesign Agentur{% endblock title %} {% block content %} {% block css %} {% compress css inline %}
-{% load get_item_tag %}
 <link href="{% static 'css/cardslider.css' %}" rel="stylesheet" />
 <link href="{% static 'css/wellen.css' %}" rel="stylesheet" />
 <link href="{% static 'css/fische.css' %}" rel="stylesheet" />
@@ -237,22 +236,90 @@
                     <div>
                         <h3 class="text-lg font-semibold mb-2">Öffnungszeiten:</h3>
                         <ul class="text-gray-600">
-                            {% for day in days %}
-                                <li class="flex">
-                                    <span class="mr-1">{{ day.name }}:</span>
-                                    <span>
-                                        {% with opening=opening_hours|get_item:day.key %}
-                                        {% if opening and opening.is_open %}
-                                            {% for period in opening.calculate_opening_periods %}
-                                                {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
-                                            {% endfor %}
-                                        {% else %}
-                                            Geschlossen
-                                        {% endif %}
-                                        {% endwith %}
-                                    </span>
-                                </li>
-                            {% endfor %}
+                            <li class="flex">
+                                <span class="mr-1">Montag:</span>
+                                <span>
+                                    {% if opening_mon and opening_mon.is_open %}
+                                        {% for period in opening_mon.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Dienstag:</span>
+                                <span>
+                                    {% if opening_tue and opening_tue.is_open %}
+                                        {% for period in opening_tue.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Mittwoch:</span>
+                                <span>
+                                    {% if opening_wed and opening_wed.is_open %}
+                                        {% for period in opening_wed.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Donnerstag:</span>
+                                <span>
+                                    {% if opening_thu and opening_thu.is_open %}
+                                        {% for period in opening_thu.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Freitag:</span>
+                                <span>
+                                    {% if opening_fri and opening_fri.is_open %}
+                                        {% for period in opening_fri.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Samstag:</span>
+                                <span>
+                                    {% if opening_sat and opening_sat.is_open %}
+                                        {% for period in opening_sat.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li class="flex">
+                                <span class="mr-1">Sonntag:</span>
+                                <span>
+                                    {% if opening_sun and opening_sun.is_open %}
+                                        {% for period in opening_sun.calculate_opening_periods %}
+                                            {{ period.0 }}-{{ period.1 }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        Geschlossen
+                                    {% endif %}
+                                </span>
+                            </li>
                         </ul>
                     </div>                    
 
